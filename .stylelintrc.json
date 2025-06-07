@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": [
+      2,
+      {
+        "baseIndentLevel": 0
+      }
+    ],
+    "order/properties-alphabetical-order": true
+  }
+}
