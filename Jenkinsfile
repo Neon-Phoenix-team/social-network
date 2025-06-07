@@ -28,8 +28,9 @@ pipeline {
                          export NVM_DIR="$HOME/.nvm"
                          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
                          nvm use --lts
-                         npm install
-                         npm run test
+                         npm install -g pnpm
+                         pnpm install
+                         pnpm run test
                       '''
                   }
              }
