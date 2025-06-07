@@ -28,8 +28,7 @@ pipeline {
                          export NVM_DIR="$HOME/.nvm"
                          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
                          nvm use --lts
-                         corepack enable
-                         corepack prepare pnpm@latest --activate
+                         npm install -g pnpm
                          pnpm install
                          pnpm run test
                       '''
