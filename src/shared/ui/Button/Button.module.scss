@@ -1,14 +1,14 @@
 @use '../../../app/styles/global/variables.scss' as *;
+@use '../../../app/styles/global/typography.scss' as *;
+
 
 .button {
+  @include h3;
   border-radius: 2px;
   padding: 6px 24px;
   border: none;
   cursor: pointer;
   background-color: transparent;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
   text-align: center;
   color: color($light, 100);
   box-sizing: border-box;
