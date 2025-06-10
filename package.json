@@ -1,0 +1,43 @@
+{
+  "name": "social-network",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:production": "pnpm run build",
+    "test": "echo \"No tests implemented yet\" && exit 0",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "lint:css": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --ignore-path .gitignore",
+    "lint:css:fix": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@radix-ui/themes": "^3.2.1",
+    "@reduxjs/toolkit": "^2.8.2",
+    "axios": "^1.9.0",
+    "date-fns": "^4.1.0",
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.57.0",
+    "sass": "^1.89.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "postcss-styled-syntax": "^0.7.1",
+    "prettier": "3.5.3",
+    "stylelint": "^16.20.0",
+    "stylelint-config-recommended-scss": "^15.0.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-order": "^7.0.0",
+    "stylelint-scss": "^6.12.0",
+    "typescript": "^5"
+  }
+}
