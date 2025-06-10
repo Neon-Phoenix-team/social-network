@@ -3,7 +3,7 @@
 
 
 .button {
-  @include fontStyle($weight:600px,$color: color($light, 100));
+  @include fontStyle($weight:600,$color: color($light, 100));
   border-radius: 2px;
   padding: 6px 24px;
   border: none;

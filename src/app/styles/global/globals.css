@@ -1,7 +1,28 @@
 @font-face {
     font-family: Inter;
-    src: url('../../../shared/assets/fonts/Inter-VariableFont_opsz_wght.woff') format('woff'),
-    url('../../../shared/assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    src: url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff') format('woff'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Barlow;
+    src: url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff') format('woff'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.ttf') format('truetype-variations');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff') format('woff'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.ttf') format('truetype-variations');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
