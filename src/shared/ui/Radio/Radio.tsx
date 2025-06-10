@@ -17,10 +17,15 @@ type DefaultSpanPropsType = DetailedHTMLProps<
 >
 
 type RadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
-  options?: any[]
+  options?: OptionType[]
   onChangeOption?: (option: any) => void
 
   spanProps?: DefaultSpanPropsType
+}
+type OptionType = {
+  id: string
+  value: string
+  disabled?: boolean
 }
 
 const Radio: React.FC<RadioPropsType> = ({
@@ -44,7 +49,7 @@ const Radio: React.FC<RadioPropsType> = ({
   const spanClassName =
     s.span + (spanProps?.className ? ' ' + spanProps.className : '')
   const mappedOptions: any[] = options
-    ? options.map(o => (
+    ? options.map((o:OptionType) => (
         <label
           key={name + '-' + o.id}
           className={
