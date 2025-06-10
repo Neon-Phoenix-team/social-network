@@ -1,0 +1,100 @@
+@use '../../../app/styles/global/variables.scss' as *;
+
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.pageGroup {
+  display: flex;
+  gap: 6px;
+  min-width: 180px;
+  justify-content: center;
+}
+
+.pageButton {
+  background: none;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+
+  &:hover {
+    background-color: color($light, 100);
+    color: color($dark, 900);
+  }
+
+  &:focus {
+    outline: 2px solid color($primary, 900);
+  }
+}
+
+.active {
+  background-color: color($light, 100);
+  color: color($dark, 900);
+  font-weight: bold;
+}
+
+.dots {
+  cursor: default;
+  color: #999;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: color($light, 100);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid color($dark, 300);
+  padding: 4px 8px;
+  background: color($dark, 500);
+  cursor: pointer;
+  min-width: 40px;
+  width: 100%;
+
+}
+
+.selectContent {
+  background-color: color($dark, 500);
+  border: 2px solid color($dark, 300);
+  padding: 4px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 60px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+
+.selectItem {
+  padding: 6px 8px;
+  cursor: pointer;
+
+  &:hover {
+
+    background-color: color($dark, 100);
+  }
+}
+
+.text {
+  margin: 0 4px;
+
+}
