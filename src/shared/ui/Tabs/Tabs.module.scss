@@ -1,0 +1,54 @@
+@use '../../../app/styles/global/variables.scss' as *;
+
+.tabsRoot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.tabsList {
+  display: flex;
+  gap: 8px;
+  border-bottom: none;
+}
+
+.tabsTrigger {
+  all: unset;
+  padding: 8px 16px;
+  color: color($primary,500);
+  border-bottom: 2px solid color($primary,500);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: color($dark, 500);
+  }
+
+  &:focus {
+    outline: 2px solid color($primary, 300);
+    outline-offset: 2px;
+  }
+
+  &[data-state='active'] {
+    background-color: color($dark, 100);
+    outline: none;
+    &:hover {
+      background-color: color($dark, 100);
+    }
+  }
+
+  &[data-disabled] {
+    background-color: color($dark, 100);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.tabsContent {
+  margin-top: 16px;
+}
