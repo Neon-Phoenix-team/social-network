@@ -1,91 +1,10 @@
 @use './variables.scss' as *;
 
-@mixin common {
+@mixin fontStyle($size:16px,$weight: 400, $color: color($dark, 900), $line-height:150%,$style: normal) {
   font-family: Inter, sans-serif;
-  color: color($dark, 900);
-}
-
-@mixin large {
-  @include common;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 138%;
-
-}
-
-@mixin h1 {
-  @include common;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 180%;
-
-}
-
-@mixin h2 {
-  @include common;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 133%;
-}
-
-@mixin h3 {
-  @include common;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-}
-
-@mixin regularText16 {
-  @include common;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-}
-
-@mixin boldText16 {
-  @include regularText16;
-  font-weight: 700;
-}
-
-@mixin regularText14 {
-  @include common;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 171%;
-}
-
-@mixin mediumText14 {
-  @include regularText14;
-  font-weight: 500;
-}
-
-@mixin boldText14 {
-  @include regularText14;
-  font-weight: 700;
-}
-
-@mixin smallText {
-  @include common;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 133%;
-}
-
-@mixin semiBoldSmallText {
-  @include smallText;
-  font-weight: 600;
-}
-
-@mixin regularLink {
-  @include common;
-  @include regularText14;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  color: color($primary, 500);
-}
-
-@mixin smallLink {
-  @include regularLink;
-  font-size: 12px;
-  line-height: 133%;
+  color: $color;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  font-style: $style
 }
