@@ -1,0 +1,73 @@
+@use "../../../app/styles/global/variables.scss" as *;
+@use "../../../app/styles/global/typography.scss" as *;
+
+.Root {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 44px;
+}
+
+.disabled{
+  cursor:not-allowed;
+  .Label,
+  .Item{
+    cursor:not-allowed;
+    pointer-events: none;
+  }
+}
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor:pointer;
+}
+
+.Item {
+  all: unset;
+  border: 2px solid color($light, 100);
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: transparent;
+
+  &:hover {
+    background-color: color($dark, 300);
+    box-shadow: 0 0 0 10px color($dark, 300);
+  }
+
+  &:active {
+    background-color: color($dark, 100);
+    box-shadow: 0 0 0 10px color($dark, 100);
+  }
+
+  &:focus-visible {
+    background-color: color($dark, 500);
+    box-shadow: 0 0 0 10px color($dark, 500);
+  }
+}
+
+.Indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: color($light, 100);
+  }
+}
+
+.Label {
+  cursor:pointer;
+  @include fontStyle($line-height: 171%, $color: color($light, 100), $size: 14px);
+  margin-left: 10px;
+}
