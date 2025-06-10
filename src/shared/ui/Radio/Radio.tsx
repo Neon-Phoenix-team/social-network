@@ -38,6 +38,7 @@ const Radio: React.FC<RadioPropsType> = ({
     e.currentTarget.checked = true
     onChangeOption?.(e.currentTarget.id[e.currentTarget.id.length - 1])
   }
+  console.log(restProps)
 
   const finalRadioClassName = s.radio + (className ? ' ' + className : '')
   const spanClassName =
@@ -46,7 +47,11 @@ const Radio: React.FC<RadioPropsType> = ({
     ? options.map(o => (
         <label
           key={name + '-' + o.id}
-          className={s.label + (o.id == value ? ' ' + s.checked : '')}
+          className={
+            s.label +
+            (o.id == value ? ' ' + s.checked : '') +
+            (o.disabled ? ' ' + s.disabled : '')
+          }
         >
           <input
             id={id + '-input-' + o.id}
@@ -56,6 +61,7 @@ const Radio: React.FC<RadioPropsType> = ({
             checked={o.id == value}
             value={o.id}
             onChange={onChangeCallback}
+            disabled={o.disabled}
             {...restProps}
           />
           <span
@@ -72,15 +78,6 @@ const Radio: React.FC<RadioPropsType> = ({
 }
 
 export default Radio
-
-
-
-
-
-
-
-
-
 
 // const options = [
 //   { id: '1', value: 'One' },

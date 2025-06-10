@@ -53,3 +53,13 @@
 .label:focus span::before {
   background-color: color($dark, 500);
 }
+
+.disabled {
+  color: color($light, 900);
+  .span {
+    border-color: color($light, 900);
+    &::before {
+      background-color: transparent !important;
+    }
+  }
+}
