@@ -1,42 +1,73 @@
+@font-face {
+    font-family: Inter;
+    src: url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff') format('woff'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Barlow;
+    src: url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff') format('woff'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.ttf') format('truetype-variations');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff2') format('woff2'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff') format('woff'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+    html {
+        color-scheme: dark;
+    }
 }
