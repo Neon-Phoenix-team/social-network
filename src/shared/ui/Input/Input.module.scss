@@ -52,7 +52,7 @@
       border-color: color($dark, 100);
     }
 
-    &:active:focus-visible {
+    &:active {
       border-color: color($light, 100);
       outline: none;
     }

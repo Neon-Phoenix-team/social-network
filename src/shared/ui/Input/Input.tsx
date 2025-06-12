@@ -1,8 +1,8 @@
 'use client'
 
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState, KeyboardEvent} from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState, KeyboardEvent } from 'react'
 import s from './Input.module.scss'
-import { Search  } from '@/shared/assets/icons/input/Search'
+import { Search } from '@/shared/assets/icons/input/Search'
 import { Eye } from '@/shared/assets/icons/input/Eye'
 import { EyeOff } from '@/shared/assets/icons/input/EyeOff'
 import { Close } from '@/shared/assets/icons/input/Close'
@@ -58,7 +58,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     }
   }
 
-
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if (onChangeText) {
       onChangeText(e.currentTarget.value)
@@ -79,6 +78,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const finalType = getType(type, showPassword)
 
+  let fillColor = '#8D9094'
+
+  if (disableValue) {
+    fillColor = '#4c4c4c'
+  } else if (isFocused || errorMessage || value) {
+    fillColor = '#fff'
+  }
+
 
   return (
 
@@ -93,16 +100,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         <div className={`${s.fieldContainer}`}>
           {type === 'searchType' && (
             <span className={disableValue ? s.searchDisabled : s.searchIcon} aria-hidden="true">
-            <Search fill={
-              disableValue
-                ? '#4c4c4c'
-                : isFocused || errorMessage || value
-                  ? '#fff'
-                  : '#8D9094'
-            } />
+            <Search fill={fillColor} />
             </span>
           )}
-          <div className={s.inputWrapper}>
           <input
             className={`${s.field} ${errorMessage ? s.error : ''}`}
             disabled={disableValue}
@@ -117,7 +117,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
             onBlur={() => setIsFocused(false)}
             {...restProps}
           />
-          </div>
           {type === 'password' && (
             <button
               className={s.buttonAction}
