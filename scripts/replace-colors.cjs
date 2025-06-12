@@ -12,6 +12,7 @@ async function main() {
     const newFileContent = fileContent
       .replaceAll('#fff', 'currentColor')
       .replaceAll('#000', 'currentColor')
+      .replaceAll('fill="none"', 'fill="currentColor"')
     fsp.writeFile(filePath, newFileContent)
 
     // const newName = file
