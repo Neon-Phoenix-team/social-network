@@ -35,6 +35,7 @@ export const Button = (props: Props) => {
   )
   const onClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (onClick) onClick(e)
+    console.log('click')
   }
   return (
     <Component onClick={onClickHandler} className={finalClassName} {...rest} />
