@@ -1,60 +1,72 @@
 @font-face {
-    font-family: Inter;
-    src: url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff2') format('woff2'),
-    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff') format('woff'),
-    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: Inter;
+  src:
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff2')
+      format('woff2'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz_wght.woff')
+      format('woff'),
+    url('../../../shared/assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf')
+      format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: Barlow;
-    src: url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff2') format('woff2'),
-    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff') format('woff'),
-    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.ttf') format('truetype-variations');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: Barlow;
+  src:
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff2')
+      format('woff2'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.woff')
+      format('woff'),
+    url('../../../shared/assets/fonts/Barlow/Barlow-Regular.ttf')
+      format('truetype-variations');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff2') format('woff2'),
-    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff') format('woff'),
-    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.ttf') format('truetype-variations');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+  font-family: Roboto;
+  src:
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff2')
+      format('woff2'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.woff')
+      format('woff'),
+    url('../../../shared/assets/fonts/Roboto/Roboto-VariableFont_wdth_wght.ttf')
+      format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
+  html {
+    color-scheme: dark;
+  }
 }
 
 body {
@@ -69,13 +81,25 @@ body {
   overflow: hidden;
 }
 
-.scroll-container{
+.scroll-container {
   margin-top: 60px;
   overflow-y: auto;
+  height: 100%;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+
+  -ms-flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  box-orient: horizontal;
 }
 
 .content {
-  padding: 36px 64px 0 60px;
+  /* padding: 36px 64px 0 60px; */
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;

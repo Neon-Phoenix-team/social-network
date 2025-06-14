@@ -14,12 +14,12 @@ import { menu } from './menuData'
 import { MenuItem } from './MenuItem/MenuItem'
 import { useRouter } from 'next/router'
 
-type MenuPropsTypes = {
-  open: boolean
-  handlOpen: () => void
-}
+// type MenuPropsTypes = {
+//   open: boolean
+//   handlOpen: () => void
+// }
 
-const Menu = (props?: MenuPropsTypes) => {
+const Menu = () => {
   return (
     <aside className={s.aside}>
       <ul className={s.list}>

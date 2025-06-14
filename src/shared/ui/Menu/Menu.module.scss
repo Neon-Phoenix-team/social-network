@@ -8,10 +8,9 @@
   padding: 60px 48px 48px;
   float: left;
   width: 220px;
-
-  background-color: #000;
+  border-right: 1px solid color($dark, 300);
+  box-flex:  0; 
 }
 .list {
   list-style: none;
 }
-
