@@ -15,6 +15,7 @@ import {
   Bookmark,
   LogOutOutline,
   LogOut,
+  Person,
 } from '@/assets/icons/components'
 
 export const menu: MenuItemPropsType[] = [
@@ -34,7 +35,7 @@ export const menu: MenuItemPropsType[] = [
     name: 'My Profile',
     path: '/my-profile',
     icon: <PersonOutline />,
-    iconActive: <Home />,
+    iconActive: <Person />,
   },
   {
     name: 'Messenger',
