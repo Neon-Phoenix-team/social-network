@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/global/globals.css";
+import { Header } from "@/shared/ui/Header/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Header></Header>
+        <div className="scroll-container">
+          <main className="content">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

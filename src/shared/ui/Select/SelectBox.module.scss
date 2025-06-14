@@ -1,0 +1,203 @@
+@use '../../../app/styles/global/variables.scss' as *;
+@use '../../../app/styles/global/typography.scss' as *;
+
+// === Label and Error ===
+.label {
+  @include fontStyle($size: 14px, $color: color($light, 900), $line-height: 170%);
+}
+
+.error {
+  @include fontStyle($size: 14, $color: color($danger, 500), $line-height: 170%);
+}
+
+// === Trigger ===
+.trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 1px solid color($dark, 100);
+  width: 100%;
+  padding: 0.37rem 0.75rem;
+
+  @include fontStyle(
+          $font-family: Inter,
+          $size: 16px,
+          $weight: 400,
+          $color: color($light, 100),
+          $line-height: 150%,
+          $style: normal
+  );
+
+  border-radius: 0.125rem;
+
+  [data-placeholder] {
+    color: color($dark, 300);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid transparent;
+    outline: 2px solid color($primary, 700);
+  }
+
+  &[data-state='open'] {
+    background: color($dark, 500);
+    border-color: color($light, 100);
+    border-radius: 2px 2px 0 0;
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover:not([data-disabled]) {
+    cursor: pointer;
+    color: color($light, 900);
+    border: 1px solid transparent;
+    outline: 1px solid color($light, 900);
+  }
+
+  &[data-disabled] {
+    cursor: initial;
+    color: color($dark, 300);
+    border-color: color($dark, 300);
+  }
+}
+
+.triggerDisabled {
+  all: inherit;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.37rem 0.75rem;
+  border: 1px solid color($dark, 100);
+  border-radius: 0.125rem;
+
+  @include fontStyle(
+          $font-family: Inter,
+          $size: 16px,
+          $weight: 400,
+          $color: color($dark, 100),
+          $line-height: 150%,
+          $style: normal
+  );
+
+  .iconDisabled {
+    fill: color($dark, 100);
+  }
+}
+
+// === Icon States ===
+.icon {
+  transition: 0.2s ease-in-out;
+}
+
+.iconDisabled {
+  fill: color($dark, 100);
+}
+
+// === Trigger Inner Layout ===
+.triggerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.valueWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.valueDescription {
+  @include fontStyle(
+          $size: 16px,
+          $weight: 400,
+          $color: color($light, 100),
+          $line-height: 150%
+  );
+}
+
+// === Select Content Dropdown ===
+.content {
+  overflow: auto;
+  width: var(--radix-select-trigger-width);
+  background: color($dark, 500);
+  border: 1px solid color($light, 100);
+  border-radius: 0 0 2px 2px;
+}
+
+.height {
+  max-height: 200px;
+}
+
+// === Item and States ===
+.item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.37rem 0.75rem;
+  color: color($light, 100);
+  outline: none;
+  transition: 0.2s ease-out;
+
+  &:hover,
+  &:focus-visible,
+  &[data-state='checked'] {
+    color: color($primary, 500) ;
+    background-color: color($dark, 300);
+  }
+}
+
+.item[aria-disabled='true'] {
+  pointer-events: none;
+  background: transparent;
+
+  .itemContent span {
+    color: color($dark, 300);
+    cursor: not-allowed;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: transparent;
+
+    .itemContent span {
+      color: color($dark, 500);
+    }
+  }
+}
+
+.item:hover .itemContent span,
+.item:focus-visible .itemContent span,
+.item[data-state='checked'] .itemContent span {
+  color: color($primary, 500);
+}
+
+// === Item Inner Layout ===
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  span {
+    @include fontStyle(
+            $size: 16px,
+            $weight: 400,
+            $color: color($light, 100),
+            $line-height: 150%
+    );
+  }
+}
