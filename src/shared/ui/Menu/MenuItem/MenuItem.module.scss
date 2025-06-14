@@ -1,0 +1,29 @@
+@use '../../../../app/styles/global/variables.scss' as *;
+
+.link {
+  color: color($light, 100);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px;
+  cursor: pointer;
+  &.active {
+    color: color($primary, 500);
+  }
+  &:hover {
+    color: color($primary, 100);
+    text-decoration: none;
+  }
+  &:focus .outline {
+    outline: 2px solid color($primary, 700);
+  }
+  &:disabled {
+    color: color($dark, 100);
+  }
+  & .outline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

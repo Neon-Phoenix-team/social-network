@@ -1,0 +1,17 @@
+@use '../../../app/styles/global/variables.scss' as *;
+
+.aside {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 60px 48px 48px;
+  float: left;
+  width: 220px;
+
+  background-color: #000;
+}
+.list {
+  list-style: none;
+}
+
