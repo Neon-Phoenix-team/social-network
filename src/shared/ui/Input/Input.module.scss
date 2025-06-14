@@ -1,0 +1,107 @@
+@use '../../../app/styles/global/variables.scss' as *;
+@use '../../../app/styles/global/typography.scss' as *;
+
+
+.fieldContainer {
+  position: relative;
+  width: 100%;
+
+  %iconBase {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .searchIcon {
+    @extend %iconBase;
+  }
+
+  .searchDisabled {
+    @extend %iconBase;
+    fill: color($dark, 100);
+  }
+
+
+  .field {
+    @include fontStyle($font-family: Inter, $size: 16px, $weight: 400, $color: color($light, 100), $line-height: 150%, $style: normal);
+    width: 100%;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid color($dark, 100);
+    border-radius: 0.125rem;
+    outline: 0;
+
+    &::placeholder {
+      color: color($light, 900);
+    }
+
+    &:hover {
+      border: 1px solid color($light, 900);
+    }
+
+    &:disabled::placeholder {
+      color: color($dark, 100);
+    }
+
+    &:disabled {
+      border-color: color($dark, 100);
+    }
+
+    &:active {
+      border-color: color($light, 100);
+      outline: none;
+    }
+
+    &:focus-visible {
+      border-color: transparent;
+      outline: 2px solid color($primary, 700);
+    }
+
+    &:not(:disabled):active {
+      outline: 1px solid color($light, 100);
+
+      &::placeholder {
+        color: color($light, 100);
+      }
+    }
+
+    &.error {
+      border-color: color($danger, 500);
+
+      &::placeholder {
+        color: color($light, 100);
+      }
+    }
+  }
+
+  .buttonAction {
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    bottom: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+    padding: 0;
+
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+}
+
+.errorMessage {
+  @include fontStyle($size: 14, $weight: 400, $color: color($danger, 500), $line-height: 170%);
+}
