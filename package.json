@@ -11,7 +11,10 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "lint:css": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --ignore-path .gitignore",
-    "lint:css:fix": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --fix --ignore-path .gitignore"
+    "lint:css:fix": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --fix --ignore-path .gitignore",
+    "rename-icons":"node scripts/rename-icons.cjs",
+    "replace-colors":"node scripts/replace-colors.cjs",
+    "generate-icons":"pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo -- src/assets/icons/svg && pnpm run replace-colors"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.2",
