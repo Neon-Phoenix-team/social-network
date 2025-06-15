@@ -8,5 +8,5 @@ const Create = () => {
     </>
   )
 }
-Create.getLayout = RootLayout
+
 export default Create

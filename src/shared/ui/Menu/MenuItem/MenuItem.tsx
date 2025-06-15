@@ -11,13 +11,15 @@ export type MenuItemPropsType = {
   icon: React.ReactElement
   iconActive: React.ReactElement
   isActive?: boolean
+  className: string
 }
 
 export const MenuItem = (props: MenuItemPropsType) => {
   const pathname = usePathname()
   const isActive = pathname === props.path
+  console.log(props.className)
   return (
-    <li>
+    <li className={props.className}>
       <Link
         href={props.path}
         className={isActive ? s.link + ' ' + s.active : s.link}
