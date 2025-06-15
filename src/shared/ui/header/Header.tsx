@@ -23,9 +23,9 @@ export const Header = () => {
               </div>
             }
             mobileContent={
-              <div className={styles.authMobileButtons} >
-                <Button variant='text'>Log in</Button>
-                <Button >Sign up</Button>
+              <div className={styles.authMobileButtons}>
+                <Button variant="text">Log in</Button>
+                <Button>Sign up</Button>
               </div>
             }
             burgerIcon={<DotsHorizontalIcon />}
