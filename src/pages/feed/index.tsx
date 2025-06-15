@@ -3,7 +3,7 @@ import Menu from '@/shared/ui/Menu/Menu'
 const Feed = () => {
   return (
     <>
-      <Menu open={true} handlOpen={() => {}} />
+      <Menu />
       <h1>Feed</h1>
     </>
   )

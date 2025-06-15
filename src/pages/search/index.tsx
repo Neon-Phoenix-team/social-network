@@ -3,7 +3,7 @@ import Menu from '@/shared/ui/Menu/Menu'
 const Search = () => {
   return (
     <>
-      <Menu open={true} handlOpen={() => {}} />
+      <Menu />
       <h1>Search</h1>
     </>
   )

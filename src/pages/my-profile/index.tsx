@@ -3,7 +3,7 @@ import Menu from '@/shared/ui/Menu/Menu'
 export const MyProfile = () => {
   return (
     <>
-      <Menu open={true} handlOpen={() => {}} />
+      <Menu />
       <h1>My Profile</h1>
     </>
   )

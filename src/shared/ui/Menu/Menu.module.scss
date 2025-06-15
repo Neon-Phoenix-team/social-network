@@ -9,8 +9,11 @@
   float: left;
   width: 220px;
   border-right: 1px solid color($dark, 300);
-  box-flex:  0; 
+  box-flex: 0;
 }
 .list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
