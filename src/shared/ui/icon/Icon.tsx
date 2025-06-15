@@ -1,5 +1,5 @@
-import React from 'react';
-import sprite from "./sprite.svg";
+import React from 'react'
+import sprite from './sprite.svg'
 
 type IconPropsType = {
   iconId: string
@@ -9,11 +9,10 @@ type IconPropsType = {
   fill?: string
   stroke?: string
   strokeWidth?: string
-
 }
 
-export const Icon = (props:IconPropsType) => {
-  const {width, height, viewBox, fill, stroke, iconId, strokeWidth} = props
+export const Icon = (props: IconPropsType) => {
+  const { width, height, viewBox, fill, stroke, iconId, strokeWidth } = props
 
   return (
     <svg
@@ -23,8 +22,9 @@ export const Icon = (props:IconPropsType) => {
       viewBox={viewBox || '0 0 24 24'}
       fill={fill || 'none'}
       stroke={stroke || 'none'}
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <use xlinkHref={`${sprite.src}#${iconId}`} />
     </svg>
-  );
-};
+  )
+}
