@@ -6,11 +6,12 @@ type SideBarItem = {
   iconId: string
   name: string
   href: string
+  color?: string
 }
 
 
 
-export const SideBarItem = ({iconId, name, href} : SideBarItem) => {
+export const SideBarItem = ({iconId, name, href, color} : SideBarItem) => {
 
   return (
     <a href={href} className={s.flexWrapper}>

@@ -7,12 +7,11 @@ type IconPropsType = {
   height?: string
   viewBox?: string
   fill?: string
-  stroke?: string
   strokeWidth?: string
 }
 
 export const Icon = (props: IconPropsType) => {
-  const { width, height, viewBox, fill, stroke, iconId, strokeWidth } = props
+  const { width, height, viewBox, fill, iconId, strokeWidth } = props
 
   return (
     <svg
@@ -21,7 +20,7 @@ export const Icon = (props: IconPropsType) => {
       height={height || '24'}
       viewBox={viewBox || '0 0 24 24'}
       fill={fill || 'none'}
-      stroke={stroke || 'none'}
+      stroke={'currentColor'}
       xmlns="http://www.w3.org/2000/svg"
     >
       <use xlinkHref={`${sprite.src}#${iconId}`} />
