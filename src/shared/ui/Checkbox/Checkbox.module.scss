@@ -1,4 +1,4 @@
-
+@use '../../styles/global/variables.scss' as *;
 
 .wrapper {
   @include fontStyle($size:14px,$line-height:171%,$color: color($light, 100));

@@ -1,0 +1,22 @@
+@use '../../styles/global/variables.scss' as *;
+@use '../../styles/global/typography.scss' as *;
+
+.recaptchaWrapper {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: scale(0.92);
+  transform-origin: top left;
+  padding: 8px 7px 14px;
+  width: fit-content;
+}
+
+.error {
+  border: 1px solid #f00;
+}
+
+.errorText {
+  margin-top: 7px;
+  @include fontStyle($size:10px,$weight: 400, $color: #f00)
+}

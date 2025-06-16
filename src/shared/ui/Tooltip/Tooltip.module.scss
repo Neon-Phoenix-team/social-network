@@ -1,0 +1,30 @@
+@use '../../styles/global/variables.scss' as *;
+@use '../../styles/global/typography.scss' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipBox {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 999;
+
+  background-color: color($light, 100);
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  width: max-content;
+}
+
+.title {
+  @include fontStyle($font-family: Roboto, $size: 18px, $weight: 900, $color: color($dark, 900));
+}
+
+.content {
+  @include fontStyle($font-family: Roboto, $weight: 500, $color: color($dark, 700));
+}

@@ -1,0 +1,54 @@
+@use '../../../styles/global/variables.scss' as *;
+
+.desktopContainer {
+  display: none;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+}
+
+.mobileContainer {
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.burgerButton {
+  padding: 8px;
+  border-radius: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: white;
+}
+
+.burgerButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdownContent {
+  min-width: 200px;
+  position: relative;
+  background: color($dark, 500);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  top: -10;
+  border: 1px solid color($dark, 300);
+  z-index: 10000;
+  animation: fadeIn 0.1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

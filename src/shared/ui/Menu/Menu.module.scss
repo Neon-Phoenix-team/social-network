@@ -1,0 +1,29 @@
+@use '../../styles/global/variables.scss' as *;
+
+.aside {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 60px 48px 48px;
+  width: 220px;
+  border-right: 1px solid color($dark, 300);
+  display: flex;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  align-self: stretch;
+}
+.extraSpace {
+  margin-bottom: 48px;
+}
+.last {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}

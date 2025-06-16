@@ -1,0 +1,52 @@
+@use '../../../../shared/styles/global/variables' as *;
+
+.flexWrapper {
+  justify-content: flex-start;
+  width: 120px;
+  display: flex;
+  margin-bottom: 24px;
+
+  &:disabled {
+    color: color($dark, 100);
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: color($primary, 100);
+  }
+
+  &:active {
+    color: color($primary, 500);
+  }
+
+  &:focus {
+    outline: 1px solid color($primary, 700);
+  }
+
+  >svg {
+    &:disabled {
+      stroke: color($dark, 100);
+    }
+    &:hover {
+      stroke: color($primary, 100);
+    }
+    &:active {
+      stroke: color($primary, 500);
+    }
+  }
+
+  > span {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.middle {
+  margin: 60px 0 180px 0;
+}
+
+.aside {
+  padding: 72px 0 0 60px;
+}

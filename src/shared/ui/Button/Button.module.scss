@@ -1,74 +1,87 @@
-@use '../../../app/styles/global/variables.scss' as *;
-@use '../../../app/styles/global/typography.scss' as *;
-
+@use '../../styles/global/variables.scss' as *;
+@use '../../styles/global/typography.scss' as *;
 
 .button {
-  @include fontStyle($weight:600,$color: color($light, 100));
+  @include fontStyle($weight: 600, $color: color($light, 100));
   border-radius: 2px;
   padding: 6px 24px;
   border: none;
   cursor: pointer;
   background-color: transparent;
   text-align: center;
-  box-sizing: border-box;
   outline: none;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
 }
 
 //primary contained
 
-.primary {
-  background-color: color($primary, 500);
-}
-
 .contained {
   background-color: color($primary, 500);
+
+  &.disabled {
+    color: color($light, 900);
+  }
 }
 
-.button.primary:active {
-  background-color: color($primary, 700);
-  color: color($light, 500);
+.primary {
+
+  &:active {
+    background-color: color($primary, 700);
+    color: color($light, 500);
+  }
+
+  &:hover {
+    background-color: color($primary, 100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color($primary, 700);
+    background-color: color($primary, 500);
+  }
+
+  &.disabled {
+    background-color: color($primary, 900);
+  }
 }
 
-.button.primary:hover {
-  background-color: color($primary, 100);
-}
-
-.button.primary:focus-visible {
-  box-shadow: 0 0 0 2px color($primary, 700);
-  background-color: color($primary, 500);
-}
-
-.button.primary.disabled {
-  background-color: color($primary, 900);
-  color: color($light, 900);
-}
-
-//secondary contained
 .secondary {
   background-color: color($dark, 300);
-}
 
-.button.secondary:active {
-  background-color: color($dark, 700);
-}
+  &:active {
+    background-color: color($dark, 700);
+  }
 
-.button.secondary:hover {
-  background-color: color($dark, 100);
-}
+  &:hover {
+    background-color: color($dark, 100);
+  }
 
-.button.secondary:focus-visible {
-  box-shadow: 0 0 0 2px color($primary,  300);
-}
+  &:focus-visible {
+    outline: 2px solid color($primary, 300);
+       }
 
-.button.secondary.disabled {
-  background-color: color($primary, 500);
-  color: color($light, 900);
+  &.disabled {
+    background-color: color($dark, 500);
+  }
 }
-
 
 //outlined, text
 .outlined {
-  box-shadow: 0 0 0 1px color($primary,  500);
+  outline: 1px solid color($primary, 500);
+
+  &:active {
+    outline: 1px solid color($primary, 700);
+  }
+
+  &:hover {
+    outline: 1px solid color($primary, 100);
+  }
+
+  &.disabled {
+    outline: 1px solid color($primary, 900);
+  }
 }
 
 .outlined, .text {
@@ -87,9 +100,8 @@
 }
 
 .outlined:focus-visible,
-.outlined:active,
 .text:focus-visible {
-  box-shadow: 0 0 0 2px color($primary, 700);
+  outline: 2px solid color($primary, 700);
 }
 
 .outlined.disabled,
@@ -97,13 +109,6 @@
   color: color($primary, 900);
 }
 
-.outlined:hover {
-  box-shadow: 0 0 0 1px color($primary, 100);
-}
-
-.outlined.disabled {
-  box-shadow: 0 0 0 1px color($primary, 900);
-}
 
 
 
