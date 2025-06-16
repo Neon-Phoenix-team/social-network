@@ -1,11 +1,9 @@
 'use client'
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import CheckboxIcon from '../../assets/icons/checkbox/selected.svg'
-import CheckboxIconDisable from '../../assets/icons/checkbox/selectedDisable.svg'
 import s from './Checkbox.module.scss'
 import clsx from 'clsx'
 import { useId } from 'react'
-
+import { CheckBoxSelected } from '@/shared/assets/icons/checkbox/CheckBoxSelected'
 
 type Props = {
   value?: string
@@ -33,10 +31,7 @@ export const Checkbox = (props: Props) => {
         name={name}
       >
         <CheckboxPrimitive.Indicator className={s.checkboxIndicator}>
-          <img
-            src={disabled ? CheckboxIconDisable.src : CheckboxIcon.src}
-            alt="checkbox"
-          />
+            <CheckBoxSelected />
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
       <label className={s.label} htmlFor={checkBoxId}>
