@@ -78,8 +78,6 @@ body {
   display: -moz-box;
   display: -ms-box;
   display: box;
-
-  -ms-flex-direction: row;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
   -ms-box-orient: horizontal;
