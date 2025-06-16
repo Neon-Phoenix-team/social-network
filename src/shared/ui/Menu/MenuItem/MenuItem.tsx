@@ -11,7 +11,7 @@ export type MenuItemPropsType = {
   icon: React.ReactElement
   iconActive: React.ReactElement
   isActive?: boolean
-  className: string
+  className?: string
 }
 
 export const MenuItem = (props: MenuItemPropsType) => {
