@@ -18,7 +18,7 @@ type InputProps = {
   onSearchClear?: () => void
   placeholder?: string
   requiredField?: boolean
-  type: 'default' | 'password' | 'searchType'
+  type?: 'default' | 'password' | 'searchType'
   value?: string
 } & ComponentPropsWithoutRef<'input'>
 
