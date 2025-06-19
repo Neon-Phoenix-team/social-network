@@ -47,7 +47,7 @@
 }
 
 .main code {
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   background: var(--gray-alpha-100);
   padding: 2px 4px;
   border-radius: 4px;
