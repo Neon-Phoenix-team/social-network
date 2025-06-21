@@ -5,6 +5,7 @@
 }
 
 .datePicker {
+  caret-color: transparent;
   height: 36px;
   width: 158px;
   background-color: #0d0d0d;
@@ -12,6 +13,9 @@
   border: none;
   color: inherit;
   padding: 5px 10px 5px 15px !important;
+  &:hover {
+    cursor: pointer;
+  }
 
   &:disabled {
     color: color($light, 900);
