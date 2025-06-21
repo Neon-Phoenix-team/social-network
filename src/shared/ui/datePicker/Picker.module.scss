@@ -1,0 +1,49 @@
+@use '../../../shared/styles/global/variables' as *;
+
+.error .datePicker {
+  outline: 1px solid color($danger, 700);
+}
+
+.datePicker {
+  caret-color: transparent;
+  height: 36px;
+  width: 158px;
+  background-color: #0d0d0d;
+  outline: 1px solid color($dark, 300);
+  border: none;
+  color: inherit;
+  padding: 5px 10px 5px 15px !important;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled {
+    color: color($light, 900);
+  }
+
+  &:active, &:hover, &:disabled, &:focus {
+    background-color: color($dark, 500);
+  }
+
+  &:focus {
+    outline: 1ps solid color($primary, 700);
+  }
+}
+
+
+.icon {
+  right: 7px;
+  width: auto;
+  height: auto;
+}
+
+.error {
+  color: color($danger, 500);
+  display: grid;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.errorText {
+  color: color($danger, 500);
+}

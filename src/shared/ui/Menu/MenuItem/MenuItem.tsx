@@ -16,12 +16,14 @@ export type MenuItemPropsType = {
 export const MenuItem = (props: MenuItemPropsType) => {
   const pathname = usePathname()
   const isActive = pathname === props.path
+  
   return (
     <li className={props.className}>
       <Link
         href={props.path}
         className={isActive ? s.link + ' ' + s.active : s.link}
       >
+
         <span className={s.outline}>
           {isActive ? props.iconActive : props.icon}
           {props.name}
