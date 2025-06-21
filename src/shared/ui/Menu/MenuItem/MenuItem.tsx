@@ -16,7 +16,6 @@ export type MenuItemPropsType = {
 export const MenuItem = (props: MenuItemPropsType) => {
   const pathname = usePathname()
   const isActive = pathname === props.path
-  console.log(props.className)
   return (
     <li className={props.className}>
       <Link
