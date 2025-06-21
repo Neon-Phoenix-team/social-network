@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import s from './MenuItem.module.scss'
-import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
 
 export type MenuItemPropsType = {
@@ -34,4 +33,4 @@ export const MenuItem = (props: MenuItemPropsType) => {
     </li>
   )
 }
-// className={s.link}
+
