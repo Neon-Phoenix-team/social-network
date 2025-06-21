@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
@@ -15,9 +15,8 @@ import { ru } from 'date-fns/locale/ru'
 registerLocale('ru', ru)
 
 export const Picker = () => {
-
   // TODO изменить на ответ от сервера или как там будет! пока просто заглушка
-  const [error, setError] = useState(false)
+  const [error, setError] = useState('')
   const [startDate, setStartDate] = useState<Date>(new Date())
   const [currentMonth, setCurrentMonth] = useState<number>(
     new Date().getMonth()
@@ -26,16 +25,6 @@ export const Picker = () => {
     new Date().getFullYear()
   )
   const [active, setActive] = useState(false)
-
-  const handleChangeDate = (date: Date | null): void => {
-    if (date) {
-      setStartDate(date)
-    }
-  }
-
-  const handleClick = () => {
-    setActive(true)
-  }
 
   const dayClassName = (date: Date): string => {
     if (!startDate) return ''
@@ -61,18 +50,28 @@ export const Picker = () => {
     setCurrentYear(date.getFullYear())
   }
 
-  // const blurHandler = ()=> {
-  //   setActive(false)
-  // }
+  const handleChangeDate = (date: Date | null): void => {
+    if (date) {
+      setStartDate(date)
+    }
+    setActive(false)
+  }
 
-  // onBlur={blurHandler}
+  const handleBlur = () => {
+    setActive(false)
+  }
+
+  const handleClick = () => {
+    setActive(true)
+  }
 
   return (
     <>
-      <div onClick={handleClick} className={error ? s.error : s.wrapper}>
+      <div className={error ? s.error : s.wrapper}>
         <DatePicker
-          open={active}
+          onInputClick={handleClick}
           dayClassName={dayClassName}
+          onBlur={handleBlur}
           className={s.datePicker}
           onMonthChange={handleMonthChange}
           selected={startDate}
@@ -88,9 +87,8 @@ export const Picker = () => {
             )
           }
         />
-        {error && <span className={s.errorText}>fasdf</span>}
+        {error && <span className={s.errorText}>{error}</span>}
       </div>
-
     </>
   )
 }
