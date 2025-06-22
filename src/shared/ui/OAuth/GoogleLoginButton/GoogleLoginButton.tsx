@@ -1,4 +1,7 @@
 import GoogleSvgrepoCom1 from '@/assets/icons/components/GoogleSvgrepoCom1'
+import Link from 'next/link'
+import { GoogleIcon } from '@/shared/assets/icons/common/GoogleIcon'
+import { Button } from '@/shared/ui/Button/Button'
 
 
 export const GoogleLoginButton = () => {
@@ -13,10 +16,8 @@ export const GoogleLoginButton = () => {
   }
 
   return (
-    <div>
-      <button onClick={login}>
-        <GoogleSvgrepoCom1/>
-      </button>
-    </div>
+    <Button variant={'text'} onClick={login}>
+        <GoogleIcon/>
+    </Button>
   )
 }

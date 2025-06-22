@@ -1,4 +1,5 @@
-import GithubSvgrepoCom31 from '@/assets/icons/components/GithubSvgrepoCom31'
+import { GitHubIcon } from '@/shared/assets/icons/common/GitHubIcon'
+import { Button } from '@/shared/ui/Button/Button'
 
 export const GitHubLoginButton = () => {
   const CLIENT_ID = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID
@@ -12,10 +13,8 @@ export const GitHubLoginButton = () => {
   }
 
   return (
-    <div>
-      <button onClick={login}>
-        <GithubSvgrepoCom31 />
-      </button>
-    </div>
+    <Button variant={'text'} onClick={login}>
+        <GitHubIcon/>
+    </Button>
   )
 }
