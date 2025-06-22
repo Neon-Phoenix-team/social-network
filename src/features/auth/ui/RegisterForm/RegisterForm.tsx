@@ -9,13 +9,14 @@ import {
 } from '@/features/auth/lib/schemas/RegisterFormSchema'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import { useRegisterMutation } from '@/features/auth/api/registrationApi'
+
 import s from './RegisterForm.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
-import { GoogleIcon } from '@/shared/assets/icons/common/GoogleIcon'
-import { GitHubIcon } from '@/shared/assets/icons/common/GitHubIcon'
+import { useRegisterMutation } from '@/features/auth/api/registrationApi'
+import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 
 const emailSentText = {
   title: 'Email sent',
@@ -80,16 +81,18 @@ export const RegisterForm = () => {
     <div className={s.formWrapper}>
       <h3>Sign Up</h3>
       <div className={s.links}>
-        <Button variant={'text'}>
-          <Link href={'https://www.google.com/'} target={'_blank'}>
-            <GoogleIcon/>
-          </Link>
-        </Button>
-        <Button variant={'text'}>
-          <Link href={'https://github.com/'} target={'_blank'}>
-          <GitHubIcon/>
-          </Link>
-        </Button>
+        {/*<Button variant={'text'}>*/}
+        {/*  <Link href={'https://www.google.com/'} target={'_blank'}>*/}
+        {/*    <GoogleIcon/>*/}
+        {/*  </Link>*/}
+        {/*</Button>*/}
+        <GoogleLoginButton/>
+        <GitHubLoginButton/>
+        {/*<Button variant={'text'}>*/}
+        {/*  <Link href={'https://github.com/'} target={'_blank'}>*/}
+        {/*  <GitHubIcon/>*/}
+        {/*  </Link>*/}
+        {/*</Button>*/}
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
         <div className={s.inputs}>
