@@ -3,6 +3,9 @@
 
 .button {
   @include fontStyle($weight: 600, $color: color($light, 100));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 2px;
   padding: 6px 24px;
   border: none;
@@ -11,7 +14,7 @@
   text-align: center;
   outline: none;
 
-  &.disabled {
+  &:disabled {
     cursor: not-allowed;
   }
 }
@@ -21,13 +24,13 @@
 .contained {
   background-color: color($primary, 500);
 
-  &.disabled {
+  &:disabled {
+    cursor: not-allowed;
     color: color($light, 900);
   }
 }
 
 .primary {
-
   &:active {
     background-color: color($primary, 700);
     color: color($light, 500);
@@ -42,7 +45,7 @@
     background-color: color($primary, 500);
   }
 
-  &.disabled {
+  &:disabled {
     background-color: color($primary, 900);
   }
 }
@@ -62,7 +65,7 @@
     outline: 2px solid color($primary, 300);
        }
 
-  &.disabled {
+  &:disabled {
     background-color: color($dark, 500);
   }
 }
@@ -79,7 +82,7 @@
     outline: 1px solid color($primary, 100);
   }
 
-  &.disabled {
+  &:disabled {
     outline: 1px solid color($primary, 900);
   }
 }
@@ -104,8 +107,8 @@
   outline: 2px solid color($primary, 700);
 }
 
-.outlined.disabled,
-.text.disabled {
+.outlined:disabled,
+.text:disabled {
   color: color($primary, 900);
 }
 
