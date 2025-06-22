@@ -2,6 +2,11 @@
 @use '../../../app/styles/global/typography.scss' as *;
 
 
+
+.label {
+  @include fontStyle($size: 14px, $weight: 400, $color: color($light, 900), $line-height: 170%, $style: normal);
+}
+
 .fieldContainer {
   position: relative;
   width: 100%;
