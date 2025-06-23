@@ -7,6 +7,7 @@ const Menu = () => {
     <aside className={s.aside}>
       <ul className={s.list}>
         {menu.map((item, index) => {
+
           return (
             <MenuItem
               {...item}

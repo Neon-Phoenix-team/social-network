@@ -1,0 +1,114 @@
+@use '../../../shared/styles/global/variables' as *;
+
+.react-datepicker-popper {
+  top: -8px !important;
+}
+
+.react-datepicker-popper .react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker__day, .inactive-month-day, .weekend-day {
+  &:hover {
+    background-color: color($primary, 700) !important;
+    border-radius: 50% !important;
+  }
+
+  &:active {
+    background-color: color($primary, 900) !important;
+    border-radius: 50% !important;
+  }
+
+  &:focus {
+    background-color: inherit;
+    outline: 1px solid color($primary, 700);
+    border-radius: 50% !important;
+  }
+}
+
+.react-datepicker__day--selected {
+  border-radius: 50%;
+}
+
+.react-datepicker__day {
+  color: color($light, 100);
+  margin: 4px;
+}
+
+.react-datepicker__day--today {
+  //TODO: `
+  // почему то стили перемешиваются, не понимаю как сделать. не хочет работать !!! коммент ниже`
+  color: color($primary, 500);
+  &:hover {
+    color: color($primary, 100);
+  }
+
+  &:active {
+    color: color($light, 100);
+    background-color: color($primary, 900);
+  }
+
+  &:focus {
+    color: color($primary, 300);
+  }
+}
+
+.weekend-day {
+  color: color($danger, 300);
+}
+
+.inactive-month-day {
+  color: color($light, 900);
+}
+
+h2.react-datepicker__current-month {
+  display: flex;
+  padding: 15px 0 0 15px;
+  color: color($light, 100);
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.react-datepicker__header, h2.react-datepicker__current-month, .react-datepicker__month-container {
+  background-color: color($dark, 500);
+  border: none;
+}
+
+.react-datepicker__day-name {
+  color: color($light, 900);
+  margin: 4px;
+}
+
+.react-datepicker {
+  border: 1px solid color($dark, 300);
+  border-radius: 2px;
+}
+
+.react-datepicker__navigation--previous {
+  right: 50px;
+  left: inherit;
+}
+
+.react-datepicker__navigation--next {
+  right: 15px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-width: 2px 2px 0 0;
+  height: 5px;
+  top: 5px;
+  width: 5px;
+  margin: 5px;
+}
+
+
+.react-datepicker__navigation--next, .react-datepicker__navigation--previous {
+  top: 15px;
+  border-radius: 50%;
+  background-color: color($dark, 100);
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: inherit;
+}
