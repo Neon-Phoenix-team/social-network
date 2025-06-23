@@ -4,6 +4,8 @@ export const emailSchema =  z.string().email({
   message: 'The email must match the format example@example.com',
 })
 
+export type Email = z.infer<typeof emailSchema>
+
 export const passwordSchema =  z
   .string()
   .min(6, { message: 'Minimum number of characters 6' })
