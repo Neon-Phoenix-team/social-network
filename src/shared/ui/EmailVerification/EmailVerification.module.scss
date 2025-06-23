@@ -1,0 +1,20 @@
+@use '../../../shared/styles/global/variables.scss' as *;
+@use '../../../shared/styles/global/typography.scss' as *;
+
+.wrapper {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & button {
+    margin: 24px 0 36px;
+  }
+}
+
+.text {
+  display: inline-block;
+  text-align: center;
+  margin: 19px 0 30px;
+}
