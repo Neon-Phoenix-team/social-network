@@ -1,5 +1,6 @@
 import { baseApi } from '@/shared/api/baseApi'
 import { RegistrationRequest, RegistrationResponse } from '@/features/auth/api/registrationApi.types'
+import { Email } from '@/features/auth/lib/schemas/CommonAuthSchemas'
 
 
 export const RegistrationApi = baseApi.injectEndpoints({
@@ -18,7 +19,7 @@ export const RegistrationApi = baseApi.injectEndpoints({
         body: { confirmationCode },
       }),
     }),
-    emailResending: build.mutation<RegistrationResponse, string>({
+    emailResending: build.mutation<RegistrationResponse, Email>({
       query: (email) => ({
         url: '/auth/registration-email-resending',
         method: 'POST',
