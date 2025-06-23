@@ -16,6 +16,7 @@ import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
 import { GoogleIcon } from '@/shared/assets/icons/common/GoogleIcon'
 import { GitHubIcon } from '@/shared/assets/icons/common/GitHubIcon'
+import { Title } from '@/shared/ui/Title/Title'
 
 const emailSentText = {
   title: 'Email sent',
@@ -66,28 +67,22 @@ export const RegisterForm = () => {
       })
   }
 
-  if (isSuccess) {
-    return (
-      <Card
-        title={emailSentText.title}
-        text={`${emailSentText.text}${email}`}
-        action={resetMutation}
-      />
-    )
-  }
-
   return (
     <div className={s.formWrapper}>
-      <h3>Sign Up</h3>
+      <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
+        <span className={s.text}>{emailSentText.text}{email}</span>
+        <Button onClick={resetMutation}>OK</Button>
+      </Card>
+      <Title>Sign Up</Title>
       <div className={s.links}>
         <Button variant={'text'}>
           <Link href={'https://www.google.com/'} target={'_blank'}>
-            <GoogleIcon/>
+            <GoogleIcon />
           </Link>
         </Button>
         <Button variant={'text'}>
           <Link href={'https://github.com/'} target={'_blank'}>
-          <GitHubIcon/>
+            <GitHubIcon />
           </Link>
         </Button>
       </div>
@@ -135,7 +130,6 @@ export const RegisterForm = () => {
                   }
                   onChange={field.onChange}
                   checked={field.value}
-                  onBlur={field.onBlur}
                 />
                 {/*  <Alert message={errors.termsAgreement.message} type="error" />*/}
                 {/*)} ❗уточнить, нужно ли ошибку показывать*/}
@@ -154,6 +148,5 @@ export const RegisterForm = () => {
         </div>
       </form>
     </div>
-
   )
 }
