@@ -12,9 +12,9 @@
     "lint:fix": "next lint --fix",
     "lint:css": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --ignore-path .gitignore",
     "lint:css:fix": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --fix --ignore-path .gitignore",
-    "rename-icons": "node scripts/rename-icons.cjs",
-    "replace-colors": "node scripts/replace-colors.cjs",
-    "generate-icons": "pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo -- src/assets/icons/svg && pnpm run replace-colors"
+    "rename-icons":"node scripts/rename-icons.cjs",
+    "replace-colors":"node scripts/replace-colors.cjs",
+    "generate-icons":"pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo -- src/assets/icons/svg && pnpm run replace-colors"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -38,7 +38,7 @@
     "react-hook-form": "^7.57.0",
     "react-redux": "^9.2.0",
     "sass": "^1.89.1",
-    "zod": "^3.25.64"
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
