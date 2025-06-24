@@ -6,6 +6,7 @@ import * as Select from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 import s from './SelectBox.module.scss'
 import { ArrowIosDown } from '@/shared/assets/icons/select/ArrowIosDown'
+import { SelectOption } from '@/shared/types/types'
 
 export type SelectBoxProps = {
   className?: string
@@ -14,12 +15,12 @@ export type SelectBoxProps = {
   height?: boolean
   idValue?: boolean
   label?: string
-  onValueChange?: (value: any) => void
-  options: any[]
+  onValueChange?: (value: string) => void
+  options: SelectOption[]
   placeholder?: ReactNode
   required?: boolean
   selectContentClassName?: string
-  value?: any
+  value?: string
   showOnlyDescription?: boolean
 }
 
@@ -41,7 +42,7 @@ export const SelectBox = ({
 
   const selected = options.find(opt => (idValue ? opt.id : opt.value) === value)
 
-  const renderItemContent = (item: any) => (
+  const renderItemContent = (item: SelectOption) => (
     <div className={s.itemContent}>
       {!showOnlyDescription && item.img}
       <span>{item.description ?? item.value}</span>

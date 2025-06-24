@@ -44,20 +44,20 @@
 }
 
 .main li:not(:last-of-type) {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .main code {
-    font-family: inherit;
-    background: var(--gray-alpha-100);
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-weight: 600;
+  font-family: Inter, sans-serif;
+  background: var(--gray-alpha-100);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
 }
 
 .ctas {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .ctas a {

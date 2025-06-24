@@ -60,7 +60,7 @@ a {
 body {
   background: rgba(13, 13, 13, 1);
   color: rgba(255, 255, 255, 1);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
@@ -78,8 +78,6 @@ body {
   display: -moz-box;
   display: -ms-box;
   display: box;
-
-  -ms-flex-direction: row;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
   -ms-box-orient: horizontal;
