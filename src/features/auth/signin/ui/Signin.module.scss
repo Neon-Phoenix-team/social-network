@@ -107,6 +107,15 @@
   color: color($primary, 500);
   text-decoration: none;
   margin-left: 0.25rem;
+
+  &:hover {
+    color: color($primary, 100);
+  }
+}
+
+.icons:hover {
+  transform: translateY(-5px) scale(1.2);
+  opacity: 0.5;
 }
 
 
