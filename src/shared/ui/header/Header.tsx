@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { Button } from '@/shared/ui/Button/Button'
 import styles from './Header.module.scss'
@@ -9,8 +9,11 @@ import { SelectOption } from '@/shared/types/types'
 import FlagRussia from '@/assets/icons/components/FlagRussia'
 import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export const Header = () => {
+  const router = useRouter()
+  const onClick = () =>{router.push('/auth/signup')}
 
   const language: SelectOption[] = [
     {
@@ -47,13 +50,15 @@ export const Header = () => {
             desktopContent={
               <div className={styles.authButtons}>
                 <Button variant="text">Log in</Button>
-                <Button>Sign up</Button>
+                <Button onClick={onClick}>
+                  Sign up
+                </Button>
               </div>
             }
             mobileContent={
               <div className={styles.authMobileButtons}>
                 <Button variant="text">Log in</Button>
-                <Button>Sign up</Button>
+                <Button onClick={onClick}>Sign up</Button>
               </div>
             }
             burgerIcon={<DotsHorizontalIcon />}
