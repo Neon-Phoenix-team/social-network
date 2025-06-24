@@ -42,6 +42,7 @@ export default function SigninForm() {
     try {
       const result = await loginTrigger(data).unwrap()
       console.log('Successful login:', result.accessToken)
+      alert('Successful login:')
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken)
       }
