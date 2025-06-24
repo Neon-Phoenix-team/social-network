@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import '@/shared/styles/global/globals.css'
 import { Header } from '@/shared/ui/header/Header'
-import Menu from '@/shared/ui/Menu/Menu'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 
@@ -21,7 +20,6 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           <div className="scroll-container">
-            <Menu />
             <main className="content">{children}</main>
           </div>
         </StoreProvider>
