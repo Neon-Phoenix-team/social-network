@@ -1,5 +1,3 @@
-import GoogleSvgrepoCom1 from '@/assets/icons/components/GoogleSvgrepoCom1'
-import Link from 'next/link'
 import { GoogleIcon } from '@/shared/assets/icons/common/GoogleIcon'
 import { Button } from '@/shared/ui/Button/Button'
 

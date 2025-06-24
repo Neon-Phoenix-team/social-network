@@ -26,7 +26,25 @@ export const RegistrationApi = baseApi.injectEndpoints({
         body: {email}
       })
     }),
+    loginWithGoogle: build.mutation<
+      { accessToken: 'string', email: 'string' },
+      { code: string; redirectUrl: string }>({
+      query: ({ code, redirectUrl }) => ({
+        url: '/auth/google/login',
+        method: 'POST',
+        body: {
+          code,
+          redirectUrl,
+        },
+      }),
+    }),
+    loginWithGitHub: build.query<undefined, void>({
+      query: () => {
+        const redirectUrl = process.env.NEXT_PUBLIC_GITHUB_REDIRECT_URL_DEV!;
+        return `/auth/github/login?redirect_url=${encodeURIComponent(redirectUrl)}`;
+      },
+    }),
   }),
 })
 
-export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation} = RegistrationApi
+export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation,useLoginWithGitHubQuery} = RegistrationApi

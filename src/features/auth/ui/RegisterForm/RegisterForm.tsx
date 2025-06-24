@@ -14,9 +14,9 @@ import s from './RegisterForm.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
-import { GoogleIcon } from '@/shared/assets/icons/common/GoogleIcon'
-import { GitHubIcon } from '@/shared/assets/icons/common/GitHubIcon'
 import { Title } from '@/shared/ui/Title/Title'
+import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 
 const emailSentText = {
   title: 'Email sent',
@@ -56,7 +56,7 @@ export const RegisterForm = () => {
     setEmail(data.email)
     registration(dataForRequest)
       .unwrap()
-      .then(res => {
+      .then(() => {
         reset()
       })
       .catch(err => {
@@ -75,16 +75,8 @@ export const RegisterForm = () => {
       </Card>
       <Title>Sign Up</Title>
       <div className={s.links}>
-        <Button variant={'text'}>
-          <Link href={'https://www.google.com/'} target={'_blank'}>
-            <GoogleIcon />
-          </Link>
-        </Button>
-        <Button variant={'text'}>
-          <Link href={'https://github.com/'} target={'_blank'}>
-            <GitHubIcon />
-          </Link>
-        </Button>
+        <GoogleLoginButton/>
+        <GitHubLoginButton/>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
         <div className={s.inputs}>

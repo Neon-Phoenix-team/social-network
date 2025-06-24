@@ -2,7 +2,8 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
-import { useLoginWithGoogleMutation } from '@/shared/api/authApi/authApi'
+import { useLoginWithGoogleMutation } from '@/features/auth/api/registrationApi'
+
 
 export default function GoogleCallbackPage() {
   const searchParams = useSearchParams()!
