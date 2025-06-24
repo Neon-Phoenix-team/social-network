@@ -91,7 +91,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
     <div className={className}>
       <label
-        className={`${s.label} ${disableValue ? s.disabled : s.secondary}`}
+        className={s.label}
       >
         {label}
         {requiredField && (
