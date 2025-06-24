@@ -1,9 +1,14 @@
+'use client'
+
 import { Button } from '@/shared/ui/Button/Button'
 import styles from './Header.module.scss'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { AdaptiveHeaderMenu } from './AdaptiveHeaderMenu/AdaptiveHeaderMenu'
+import { useRouter } from 'next/navigation'
 
 export const Header = () => {
+  const router = useRouter()
+  const onClick = () =>{router.push('/auth/signup')}
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -19,13 +24,15 @@ export const Header = () => {
             desktopContent={
               <div className={styles.authButtons}>
                 <Button variant="text">Log in</Button>
-                <Button>Sign up</Button>
+                <Button onClick={onClick}>
+                  Sign up
+                </Button>
               </div>
             }
             mobileContent={
               <div className={styles.authMobileButtons}>
                 <Button variant="text">Log in</Button>
-                <Button>Sign up</Button>
+                <Button onClick={onClick}>Sign up</Button>
               </div>
             }
             burgerIcon={<DotsHorizontalIcon />}
