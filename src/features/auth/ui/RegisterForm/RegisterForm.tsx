@@ -70,13 +70,16 @@ export const RegisterForm = () => {
   return (
     <div className={s.formWrapper}>
       <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
-        <span className={s.text}>{emailSentText.text}{email}</span>
+        <span className={s.text}>
+          {emailSentText.text}
+          {email}
+        </span>
         <Button onClick={resetMutation}>OK</Button>
       </Card>
       <Title>Sign Up</Title>
       <div className={s.links}>
-        <GoogleLoginButton/>
-        <GitHubLoginButton/>
+        <GoogleLoginButton />
+        <GitHubLoginButton />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
         <div className={s.inputs}>
@@ -135,7 +138,7 @@ export const RegisterForm = () => {
         <div className={s.signIn}>
           <span>Do you have an account?</span>
           <Button variant={'text'}>
-            <Link href={'/'}>Sign In</Link>
+            <Link href={'/auth/login'}>Sign In</Link>
           </Button>
         </div>
       </form>
