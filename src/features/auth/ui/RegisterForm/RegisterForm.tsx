@@ -116,8 +116,8 @@ export const RegisterForm = () => {
                   label={
                     <>
                       I agree to the{' '}
-                      <Link href={'/TermsOfService'}>Terms of Service</Link> and{' '}
-                      <Link href={'/Privacy'}>Privacy Policy</Link>
+                      <Link href={'/auth/signup/termsOfService'}>Terms of Service</Link> and{' '}
+                      <Link href={'/auth/signup/privacy'}>Privacy Policy</Link>
                     </>
                   }
                   onChange={field.onChange}
