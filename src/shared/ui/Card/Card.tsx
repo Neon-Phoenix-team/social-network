@@ -4,6 +4,7 @@ import { Button } from '@/shared/ui/Button/Button'
 import s from './Card.module.scss'
 import { CloseIcon } from '@/shared/assets/icons/common/Close'
 import { ReactNode } from 'react'
+import { Title } from '@/shared/ui/Title/Title'
 
 export type CardTextType = {
   open: boolean
@@ -18,7 +19,7 @@ export const Card = ({ title,action, open,children }: CardTextType) => {
         <div className={s.overlay}>
           <div className={s.wrapper}>
             <div className={s.title}>
-              <span>{title}</span>
+              <Title>{title}</Title>
               <Button
                 onClick={action}
                 variant={'text'}

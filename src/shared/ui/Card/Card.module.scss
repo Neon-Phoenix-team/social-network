@@ -26,7 +26,6 @@
 }
 
 .title {
-  @include fontStyle($weight: 700, $size: 20px, $line-height: 180%, $color: color($light, 100));
   padding: 12px 24px;
   display: flex;
   align-items: center;
@@ -45,9 +44,4 @@
   & button {
     align-self: flex-end;
   }
-}
-
-.text {
-  display: inline-block;
-  margin-bottom: 18px;
 }

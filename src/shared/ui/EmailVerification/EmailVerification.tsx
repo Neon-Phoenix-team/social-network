@@ -44,39 +44,43 @@ export const EmailVerification = ({
   }
 
   return (
-    <div className={s.wrapper}>
-      <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
-        <span className={s.text}>
+    <>
+      <Card open={isSuccess} title={emailSentText.title} action={onClickCardClose}>
+        <span>
           {emailSentText.text}
           {emailForSend}
         </span>
         <Button onClick={onClickCardClose}>OK</Button>
       </Card>
-      {isEmailSuccess ? (
-        <>
-          <Title>Congratulations!</Title>
-          <span className={s.text}>Your email has been confirmed</span>
-          <Button onClick={onClickSuccess}>Sign In</Button>
-          <ConfirmSuccess />
-        </>
-      ) : (
-        <>
-          <Title>Email verification link expired</Title>
-          <span className={s.text}>
+      <div className={s.wrapper}>
+
+        {isEmailSuccess ? (
+          <>
+            <Title>Congratulations!</Title>
+            <span className={s.text}>Your email has been confirmed</span>
+            <Button onClick={onClickSuccess}>Sign In</Button>
+            <ConfirmSuccess />
+          </>
+        ) : (
+          <>
+            <Title>Email verification link expired</Title>
+            <span className={s.text}>
             Looks like the verification link has expired. Not to worry, we can
             send the link again
           </span>
-          {showForm && (
-            <Input
-              value={emailForSend}
-              label="Email"
-              onChangeText={setEmailForSend}
-            />
-          )}
-          <Button onClick={onClickResend}>Resend verification link</Button>
-          <Await />
-        </>
-      )}
-    </div>
+            {showForm && (
+              <Input
+                value={emailForSend}
+                label="Email"
+                onChangeText={setEmailForSend}
+              />
+            )}
+            <Button onClick={onClickResend}>Resend verification link</Button>
+            <Await />
+          </>
+        )}
+      </div>
+    </>
+
   )
 }

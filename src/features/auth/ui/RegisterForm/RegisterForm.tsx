@@ -70,7 +70,7 @@ export const RegisterForm = () => {
   return (
     <div className={s.formWrapper}>
       <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
-        <span className={s.text}>
+        <span>
           {emailSentText.text}
           {email}
         </span>
