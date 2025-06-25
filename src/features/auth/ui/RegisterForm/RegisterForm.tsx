@@ -18,7 +18,7 @@ import { Title } from '@/shared/ui/Title/Title'
 import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
 import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 
-const emailSentText = {
+export const emailSentText = {
   title: 'Email sent',
   text: 'We have sent a link to confirm your email to ',
 }

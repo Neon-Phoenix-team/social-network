@@ -8,34 +8,51 @@ import { useState } from 'react'
 import { useEmailResendingMutation } from '@/features/auth/api/registrationApi'
 import { Title } from '@/shared/ui/Title/Title'
 import { useRouter } from 'next/navigation'
-
+import { Card } from '@/shared/ui/Card/Card'
+import { emailSentText } from '@/features/auth/ui/RegisterForm/RegisterForm'
 
 type Props = {
-  isSuccess: boolean
+  isEmailSuccess: boolean
   showForm?: boolean
   email?: Email | ''
 }
 
-export const EmailVerification = ({ isSuccess, showForm,email = '' }: Props) => {
-  const [emailResending] = useEmailResendingMutation()
-
+export const EmailVerification = ({
+  isEmailSuccess,
+  showForm,
+  email = '',
+}: Props) => {
   const router = useRouter()
+
+  const [emailResending, { isSuccess, reset: resetMutation }] =
+    useEmailResendingMutation()
 
   const [emailForSend, setEmailForSend] = useState<Email>(email)
 
   const onClickResend = () => {
-    emailResending(email).then(() => {
-      setEmailForSend('')
-    })
+    emailResending(emailForSend)
   }
 
   const onClickSuccess = () => {
-    router.push('/')
+    router.push('/auth/login')
+  }
+
+  const onClickCardClose = () => {
+    resetMutation()
+    router.push('/auth/signup')
+    setEmailForSend('')
   }
 
   return (
     <div className={s.wrapper}>
-      {isSuccess ? (
+      <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
+        <span className={s.text}>
+          {emailSentText.text}
+          {emailForSend}
+        </span>
+        <Button onClick={onClickCardClose}>OK</Button>
+      </Card>
+      {isEmailSuccess ? (
         <>
           <Title>Congratulations!</Title>
           <span className={s.text}>Your email has been confirmed</span>
@@ -49,7 +66,13 @@ export const EmailVerification = ({ isSuccess, showForm,email = '' }: Props) => 
             Looks like the verification link has expired. Not to worry, we can
             send the link again
           </span>
-          {showForm && <Input value={emailForSend} label="Email" onChangeText={setEmailForSend} />}
+          {showForm && (
+            <Input
+              value={emailForSend}
+              label="Email"
+              onChangeText={setEmailForSend}
+            />
+          )}
           <Button onClick={onClickResend}>Resend verification link</Button>
           <Await />
         </>

@@ -21,7 +21,7 @@ export default function Home() {
   }, [confirm, code])
 
   if (code) {
-    return <EmailVerification showForm isSuccess={isSuccess} />
+    return <EmailVerification showForm isEmailSuccess={isSuccess} />
   }
 
   return (
