@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
 import '@/shared/styles/global/globals.css'
 import { Header } from '@/shared/ui/header/Header'
-import Menu from '@/shared/ui/Menu/Menu'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
-
-
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,14 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
-      <StoreProvider >
-        <Header />
-        <div className="scroll-container">
-          <Menu />
-          <main className="content">{children}</main>
-        </div>
-      </StoreProvider>
+      <body>
+        <StoreProvider>
+          <Header />
+          <div className="scroll-container">
+            <main className="content">{children}</main>
+          </div>
+        </StoreProvider>
       </body>
     </html>
   )
