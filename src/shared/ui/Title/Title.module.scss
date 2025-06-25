@@ -3,4 +3,5 @@
 
 .title{
   @include fontStyle($size: 20px, $weight: 700, $line-height: 180%, $color: color($light, 100));
+  text-align: center;
 }
