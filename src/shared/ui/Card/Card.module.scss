@@ -1,10 +1,11 @@
 @use '@/shared/styles/global/variables' as *;
 @use '@/shared/styles/global/typography' as *;
 
-.overlay{
+.overlay {
   position: fixed;
   inset: 0;
   background: color($dark, 700);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
 
@@ -27,7 +28,7 @@
 
 .title {
   @include fontStyle($weight: 700, $size: 20px, $line-height: 180%, $color: color($light, 100));
-  padding: 12px 24px;
+  padding: 12px 0 12px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,6 +42,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 30px 24px;
+  line-height: 24px;
 
   & button {
     align-self: flex-end;
@@ -50,4 +52,15 @@
 .text {
   display: inline-block;
   margin-bottom: 18px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 24px 36px 0;
+
+  button {
+    padding: 6px 36px;
+  }
 }

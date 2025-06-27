@@ -11,7 +11,7 @@ export type CardTextType = {
   action: () => void
   children: ReactNode
 }
-export const Card = ({ title,action, open,children }: CardTextType) => {
+export const Card = ({ title, action, open, children }: CardTextType) => {
   return (
     <>
       {open && (
@@ -29,6 +29,14 @@ export const Card = ({ title,action, open,children }: CardTextType) => {
             </div>
             <div className={s.textWrapper}>
               {children}
+            </div>
+            <div className={s.button}>
+              <Button
+                onClick={action}
+                style={{ color: '#fff' }}
+              >
+                OK
+              </Button>
             </div>
           </div>
         </div>
