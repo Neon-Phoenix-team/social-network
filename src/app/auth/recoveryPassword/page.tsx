@@ -4,20 +4,23 @@ import { useCheckRecoveryCodeMutation } from "@/features/auth/forgotPassword/api
 import { ExpiredTokenScreen } from "@/features/auth/forgotPassword/ui/components/ExpiredTokenScreen/ExpiredTokenScreen";
 import { NewPasswordForm } from "@/features/auth/forgotPassword/ui/components/NewPasswordForm/NewPasswordForm";
 import { useRouter, useSearchParams } from "next/dist/client/components/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function PasswordResetPage() {
   const searchParams = useSearchParams();
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   const code = searchParams?.get('code');
   const email = searchParams?.get('email');
-  const router = useRouter()
 
   useEffect(() => {
     if (!code) {
       router.push('/')
       return
     }
-  }, [])
+    handleVerify();
+  }, [code, router])
 
   const [checkCode, { isError }] = useCheckRecoveryCodeMutation();
 
@@ -28,16 +31,18 @@ export default function PasswordResetPage() {
       await checkCode({ recoveryCode: code }).unwrap();
     } catch (error) {
       console.error('Token verification failed:', error);
+    } finally {
+      setIsLoading(false)
     }
   };
 
-  useEffect(() => {
-    handleVerify();
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-  return isError ? (
-    <ExpiredTokenScreen email={email} />
-  ) : (
-    <NewPasswordForm code={code} />
-  );
+  if (isError) {
+    return <ExpiredTokenScreen email={email} />;
+  }
+
+  return <NewPasswordForm code={code} />
 }

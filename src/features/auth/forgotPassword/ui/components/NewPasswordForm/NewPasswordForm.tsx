@@ -33,7 +33,7 @@ export const NewPasswordForm = ({ code }: PropsType) => {
       }
       reset();
     } catch (error) {
-      console.error("Ошибка при смене пароля:", error);
+      console.error("Error on password change:", error);
     }
   }
 
@@ -49,6 +49,7 @@ export const NewPasswordForm = ({ code }: PropsType) => {
             <Input
               type="password"
               {...register("newPassword")}
+              placeholder="New password"
             />
             {errors.newPassword && (
               <p className={styles.inputError}>{errors.newPassword.message}</p>
@@ -60,6 +61,7 @@ export const NewPasswordForm = ({ code }: PropsType) => {
             </label>
             <Input
               type="password"
+              placeholder="Password confirmation"
               {...register("confirmPassword")}
               errorMessage={errors ? errors?.confirmPassword?.message : ''}
             />

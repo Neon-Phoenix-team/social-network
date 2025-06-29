@@ -9,13 +9,16 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import styles from './ForgotPasswordForm.module.scss'
 import { isApiError } from "../api/forgotPasswordApi.types";
-import { ForgotPasswordFormData } from "../schemas";
 import { Card } from "@/shared/ui/Card/Card";
+import { ForgotPasswordFormData, forgotPasswordSchema } from "../schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const modalText = {
   title: "Email sent",
   text: 'We have sent a link to confirm your email to '
 }
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const ForgotPasswordForm = () => {
   const [forgotPassword, { isSuccess, reset: resetMutation }] = useForgotPasswordMutation();
@@ -31,6 +34,7 @@ export const ForgotPasswordForm = () => {
     reset,
     watch
   } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(forgotPasswordSchema),
     mode: 'onBlur',
     reValidateMode: "onBlur",
     defaultValues: {
@@ -48,7 +52,7 @@ export const ForgotPasswordForm = () => {
     }
 
     try {
-      await forgotPassword({ email: data.email, recaptcha: data.recaptchaToken, baseUrl: "http://localhost:3000" }).unwrap();
+      await forgotPassword({ email: data.email, recaptcha: data.recaptchaToken, baseUrl }).unwrap();
       setEmail(data.email)
       reset();
       setServerErrorMessage(null)
@@ -63,6 +67,13 @@ export const ForgotPasswordForm = () => {
     <div className={styles.formContainer}>
       <Card open={isSuccess} title={modalText.title} action={resetMutation}>
         <div>{modalText.text}{email}</div>
+        <div className={styles.modalButton}>
+          <Button
+            onClick={resetMutation}
+          >
+            OK
+          </Button>
+        </div>
       </Card>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h2>Forgot Password</h2>
@@ -75,6 +86,7 @@ export const ForgotPasswordForm = () => {
             placeholder="email@example.com"
             {...register('email')}
             errorMessage={errors.email?.message}
+            onChange={() => setServerErrorMessage(null)}
           />
           {serverErrorMessage && (
             <p className={styles.inputError}>{serverErrorMessage}</p>

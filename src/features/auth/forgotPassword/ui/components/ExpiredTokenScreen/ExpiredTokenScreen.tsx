@@ -17,6 +17,8 @@ const modalText = {
   text: 'We have sent a link to confirm your email to '
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
+
 export const ExpiredTokenScreen = ({ email }: PropsType) => {
   const [resendEmailMessage, { isSuccess, reset: resetMutation }] = usePasswordRecoveryResendingMutation()
   const [serverErrorMessage, setServerErrorMessage] = useState<string | null>(null)
@@ -24,7 +26,7 @@ export const ExpiredTokenScreen = ({ email }: PropsType) => {
   const handleResend = async () => {
     try {
       if (email) {
-        await resendEmailMessage({ email, baseUrl: "http://localhost:3000" }).unwrap()
+        await resendEmailMessage({ email, baseUrl }).unwrap()
         setServerErrorMessage(null)
       }
     } catch (error) {
@@ -35,12 +37,17 @@ export const ExpiredTokenScreen = ({ email }: PropsType) => {
     }
   }
 
-  console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY)
-
   return (
     <div className={styles.container}>
       <Card open={isSuccess} title={modalText.title} action={resetMutation}>
         <div>{modalText.text}{email}</div>
+        <div className={styles.modalButton}>
+          <Button
+            onClick={resetMutation}
+          >
+            OK
+          </Button>
+        </div>
       </Card>
       <div className={styles.content}>
         <div className={styles.title}>Email verification link expired</div>

@@ -30,14 +30,6 @@ export const Card = ({ title, action, open, children }: CardTextType) => {
             <div className={s.textWrapper}>
               {children}
             </div>
-            <div className={s.button}>
-              <Button
-                onClick={action}
-                style={{ color: '#fff' }}
-              >
-                OK
-              </Button>
-            </div>
           </div>
         </div>
       )}
