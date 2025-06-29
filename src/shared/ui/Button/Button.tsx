@@ -33,11 +33,7 @@ export const Button = (props: Props) => {
     variant === 'contained' && color && s[color ?? 'primary'],
     disabled && s.disabled
   )
-  const onClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (onClick) onClick(e)
-    console.log('click')
-  }
   return (
-    <Component onClick={onClickHandler} className={finalClassName} {...rest} />
+    <Component onClick={onClick} className={finalClassName} disabled={disabled} {...rest} />
   )
 }

@@ -1,11 +1,11 @@
 @use '../../styles/global/variables.scss' as *;
+@use '../../styles/global/typography.scss' as *;
 
 .wrapper {
+  @include fontStyle($size:14px,$line-height:171%,$color: color($light, 100));
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 8px;
-  cursor: pointer;
 }
 
 .disabledBox {
@@ -18,6 +18,7 @@
 }
 
 .checkboxInput {
+  color: color($light, 100);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +32,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 50px;
 
   &[data-state='checked']{
@@ -41,10 +42,11 @@
     background-color: color($dark, 300);
   }
 
-  &:disabled {
+  &[data-disabled] {
     cursor: not-allowed;
     pointer-events: none;
-    background-image: none;
+    color: color($light, 900);
+    background-image: url("../../assets/icons/checkbox/unselectedDisable.svg");
   }
 
   &:active {
@@ -58,16 +60,14 @@
 }
 
 .checkboxIndicator {
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-
 .label {
-  color: color($light, 100);
+  font-size: 12px;
   cursor: pointer;
 }
 

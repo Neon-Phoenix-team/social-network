@@ -1,0 +1,6 @@
+@use '../../../shared/styles/global/variables.scss' as *;
+@use '../../../shared/styles/global/typography.scss' as *;
+
+.title{
+  @include fontStyle($size: 20px, $weight: 700, $line-height: 180%, $color: color($light, 100));
+}
