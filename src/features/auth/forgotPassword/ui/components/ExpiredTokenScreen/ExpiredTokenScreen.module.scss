@@ -1,0 +1,58 @@
+@use '../../../../../../shared/styles/global/variables.scss' as *;
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .content {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 294px;
+
+    .title {
+      margin-bottom: 37px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 36px;
+    }
+
+    .button {
+      margin-top: 30px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .text {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .emailError {
+      margin-top: 10px;
+      color: color($danger, 500);
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+
+  .image {
+    margin-top: 32px;
+  }
+
+  .modalButton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+
+    button {
+      padding: 6px 36px;
+    }
+  }
+}

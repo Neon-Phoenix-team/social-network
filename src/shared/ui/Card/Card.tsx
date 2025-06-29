@@ -11,7 +11,7 @@ export type CardTextType = {
   action: () => void
   children: ReactNode
 }
-export const Card = ({ title,action, open,children }: CardTextType) => {
+export const Card = ({ title, action, open, children }: CardTextType) => {
   return (
     <>
       {open && (
