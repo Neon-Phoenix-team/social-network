@@ -1,15 +1,24 @@
 'use client'
 import styles from './page.module.css'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
 import { useRegistrationConfirmationMutation } from '@/features/auth/api/registrationApi'
 
 export default function Home() {
-
+  const router = useRouter()
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
-  const [confirm,{isSuccess,isError}] = useRegistrationConfirmationMutation()
+  const email = searchParams?.get('email')
+
+
+  if (email && code) {
+    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`);
+    return null; 
+  }
+
+  const [confirm, { isSuccess, isError }] = useRegistrationConfirmationMutation()
+
   useEffect(() => {
     if (code) {
       confirm(code)
