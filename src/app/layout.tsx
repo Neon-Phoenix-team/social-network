@@ -3,6 +3,7 @@ import '@/shared/styles/global/globals.css'
 import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
+import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,6 +23,7 @@ export default function RootLayout({
           <div className="scroll-container">
             <main className="content">{children}</main>
           </div>
+          <ErrorAlert/>
         </StoreProvider>
       </body>
     </html>
