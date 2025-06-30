@@ -12,15 +12,16 @@
     "lint:fix": "next lint --fix",
     "lint:css": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --ignore-path .gitignore",
     "lint:css:fix": "stylelint '**/*.{css,scss,js,jsx,ts,tsx}' --fix --ignore-path .gitignore",
-    "rename-icons":"node scripts/rename-icons.cjs",
-    "replace-colors":"node scripts/replace-colors.cjs",
-    "generate-icons":"pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo -- src/assets/icons/svg && pnpm run replace-colors"
+    "rename-icons": "node scripts/rename-icons.cjs",
+    "replace-colors": "node scripts/replace-colors.cjs",
+    "generate-icons": "pnpm run rename-icons && npx @svgr/cli --out-dir src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo -- src/assets/icons/svg && pnpm run replace-colors"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
     "@radix-ui/react-checkbox": "^1.3.2",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.12",
