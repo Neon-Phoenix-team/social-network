@@ -120,7 +120,7 @@ export default function SigninForm() {
         </label>
 
         <div className={styles.forgotWrapper}>
-          <Link href={'#'}>Forgot password</Link>
+          <Link href={"/auth/forgotPassword"}>Forgot password</Link>
         </div>
 
         <Button type="submit" disabled={isLoading || !isValid}>
