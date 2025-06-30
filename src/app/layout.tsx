@@ -4,6 +4,7 @@ import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
+import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           <div className="scroll-container">
+            <GlobalLinearProgress/>
             <main className="content">{children}</main>
           </div>
           <ErrorAlert/>
