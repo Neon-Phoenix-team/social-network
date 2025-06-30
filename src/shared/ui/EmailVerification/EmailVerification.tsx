@@ -18,7 +18,6 @@ type Props = {
 
 export const EmailVerification = ({ isSuccess, showForm,email = '' }: Props) => {
   const [emailResending] = useEmailResendingMutation()
-
   const router = useRouter()
 
   const [emailForSend, setEmailForSend] = useState<Email>(email)

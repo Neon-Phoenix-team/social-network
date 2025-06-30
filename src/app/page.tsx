@@ -9,7 +9,7 @@ export default function Home() {
 
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
-  const [confirm,{isSuccess}] = useRegistrationConfirmationMutation()
+  const [confirm,{isSuccess,isError}] = useRegistrationConfirmationMutation()
   useEffect(() => {
     if (code) {
       confirm(code)
@@ -20,7 +20,7 @@ export default function Home() {
     }
   }, [confirm, code])
 
-  if (code) {
+  if (code && (isSuccess || isError)) {
     return <EmailVerification showForm isSuccess={isSuccess} />
   }
 
