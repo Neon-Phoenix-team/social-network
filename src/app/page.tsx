@@ -11,11 +11,14 @@ export default function Home() {
   const code = searchParams?.get('code')
   const email = searchParams?.get('email')
 
+
   if (email && code) {
     router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`);
+    return null; 
   }
 
-  const [confirm, { isSuccess }] = useRegistrationConfirmationMutation()
+  const [confirm, { isSuccess, isError }] = useRegistrationConfirmationMutation()
+
   useEffect(() => {
     if (code) {
       confirm(code)
@@ -26,7 +29,7 @@ export default function Home() {
     }
   }, [confirm, code])
 
-  if (code) {
+  if (code && (isSuccess || isError)) {
     return <EmailVerification showForm isSuccess={isSuccess} />
   }
 
