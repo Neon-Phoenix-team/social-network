@@ -4,6 +4,7 @@ import { Email } from '@/features/auth/lib/schemas/CommonAuthSchemas'
 
 
 export const RegistrationApi = baseApi.injectEndpoints({
+  overrideExisting: true,
   endpoints: build => ({
     register: build.mutation<RegistrationResponse, RegistrationRequest>({
       query: body => ({
@@ -44,7 +45,13 @@ export const RegistrationApi = baseApi.injectEndpoints({
         return `/auth/github/login?redirect_url=${encodeURIComponent(redirectUrl)}`;
       },
     }),
+    logout: build.mutation<RegistrationResponse, void>({
+      query: () => ({
+        url: 'auth/logout',
+        method: 'POST',
+      }),
+    }),
   }),
 })
 
-export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation,useLoginWithGitHubQuery} = RegistrationApi
+export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation,useLoginWithGitHubQuery, useLogoutMutation} = RegistrationApi

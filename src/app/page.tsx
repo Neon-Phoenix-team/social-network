@@ -10,6 +10,7 @@ export default function Home() {
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
   const [confirm,{isSuccess}] = useRegistrationConfirmationMutation()
+
   useEffect(() => {
     if (code) {
       confirm(code)
