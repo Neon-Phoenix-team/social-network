@@ -13,7 +13,9 @@ import { useRouter } from 'next/navigation'
 
 export const Header = () => {
   const router = useRouter()
-  const onClick = () =>{router.push('/auth/signup')}
+  const onClickSignup = () =>{router.push('/auth/signup')}
+  const onClickLogin = () =>{router.push('/auth/login')}
+
 
   const language: SelectOption[] = [
     {
@@ -49,16 +51,16 @@ export const Header = () => {
           <AdaptiveHeaderMenu
             desktopContent={
               <div className={styles.authButtons}>
-                <Button variant="text">Log in</Button>
-                <Button onClick={onClick}>
+                <Button onClick={onClickLogin} variant="text">Log in</Button>
+                <Button onClick={onClickSignup}>
                   Sign up
                 </Button>
               </div>
             }
             mobileContent={
               <div className={styles.authMobileButtons}>
-                <Button variant="text">Log in</Button>
-                <Button onClick={onClick}>Sign up</Button>
+                <Button onClick={onClickLogin} variant="text">Log in</Button>
+                <Button onClick={onClickSignup}>Sign up</Button>
               </div>
             }
             burgerIcon={<DotsHorizontalIcon />}

@@ -61,10 +61,10 @@ export const menu: MenuItemPropsType[] = [
     icon: <BookmarkOutline />,
     iconActive: <Bookmark />,
   },
-  {
-    name: 'Log Out',
-    path: '/#',
-    icon: <LogOutOutline />,
-    iconActive: <LogOut />,
-  },
+  // {
+  //   name: 'Log Out',
+  //   path: '/#',
+  //   icon: <LogOutOutline />,
+  //   iconActive: <LogOut />,
+  // },
 ]

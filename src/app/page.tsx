@@ -9,9 +9,13 @@ export default function Home() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
+
+  const [confirm,{isSuccess}] = useRegistrationConfirmationMutation()
+
   const email = searchParams?.get('email')
 
   const [confirm, { isSuccess, isError }] = useRegistrationConfirmationMutation()
+
 
   useEffect(() => {
     if (code) {
