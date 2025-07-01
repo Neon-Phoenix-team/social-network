@@ -10,18 +10,15 @@ export default function Home() {
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
 
-  const [confirm,{isSuccess}] = useRegistrationConfirmationMutation()
-
   const email = searchParams?.get('email')
 
-
   if (email && code) {
-    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`);
-    return null; 
+    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
+    return null
   }
 
-  const [confirm, { isSuccess, isError }] = useRegistrationConfirmationMutation()
-
+  const [confirm, { isSuccess, isError }] =
+    useRegistrationConfirmationMutation()
 
   useEffect(() => {
     if (code) {
