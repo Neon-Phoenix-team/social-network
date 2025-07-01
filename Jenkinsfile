@@ -21,16 +21,27 @@ pipeline {
             }
         }
         stage('Unit tests') {
-            steps {
-                echo "Running unit tests..."
-                script {
-                    sh '''
-                        # Самый простой вариант - используем npx для pnpm
-                        npx pnpm@latest install
-                        npx pnpm run test
-                    '''
-                }
-            }
+             steps {
+                     echo "Running unit tests..."
+                     script {
+                         sh '''
+                             # Принудительно устанавливаем нужную версию pnpm
+                             npm install -g pnpm@9.15.3
+
+                             # Проверяем версию pnpm
+                             pnpm -v
+
+                             # Чистим кэш (на всякий случай)
+                             pnpm store prune || true
+
+                             # Устанавливаем зависимости
+                             pnpm install
+
+                             # Запускаем тесты
+                             pnpm run test
+                         '''
+                     }
+                 }
         }
         stage('Build docker image') {
             steps {
