@@ -1,5 +1,6 @@
 import { baseApi } from '@/shared/api/baseApi'
 import {
+  MeResponse,
   SignInArgs,
   SignInResponse,
 } from '@/features/auth/signin/model/signInApi.types'
@@ -13,6 +14,9 @@ export const signInApi = baseApi.injectEndpoints({
         body,
       }),
     }),
+    getMe: build.query<MeResponse, void>({
+      query: () => `/auth/me`,
+    }),
   }),
 })
-export const { useLoginMutation } = signInApi
+export const { useLoginMutation, useGetMeQuery, useLazyGetMeQuery } = signInApi
