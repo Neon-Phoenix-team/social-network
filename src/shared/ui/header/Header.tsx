@@ -41,6 +41,7 @@ export const Header = () => {
         <div className={styles.menu}>
           <div className={styles.langButton}>
             <SelectBox
+              className={styles.customTriggerSelect}
               options={language}
               value={selected}
               onValueChange={setSelected}
