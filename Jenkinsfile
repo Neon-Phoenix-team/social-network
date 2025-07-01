@@ -21,19 +21,38 @@ pipeline {
             }
         }
         stage('Unit tests') {
-             steps {
+            steps {
                 echo "Preparing started..."
-                  script {
-                      sh '''
-                         export NVM_DIR="$HOME/.nvm"
-                         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                         nvm use --lts
-                         npm install -g pnpm
-                         pnpm install
-                         pnpm run test
-                      '''
-                  }
-             }
+                script {
+                    sh '''
+                        # Проверяем, установлен ли nvm
+                        if [ -d "$HOME/.nvm" ]; then
+                            export NVM_DIR="$HOME/.nvm"
+                            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                            nvm install --lts
+                            nvm use --lts
+                        else
+                            echo "NVM not found, using system Node.js"
+                        fi
+
+                        # Проверяем версии Node.js и npm
+                        node -v
+                        npm -v
+
+                        # Устанавливаем конкретную версию pnpm (совместимую с вашим проектом)
+                        npm install -g pnpm@9.15.3
+
+                        # Очищаем кэш pnpm (на случай предыдущих неудачных установок)
+                        pnpm store prune || echo "pnpm store prune failed, continuing..."
+
+                        # Устанавливаем зависимости
+                        pnpm install
+
+                        # Запускаем тесты
+                        pnpm run test
+                    '''
+                }
+            }
         }
         stage('Build docker image') {
             steps {
