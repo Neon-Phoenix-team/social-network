@@ -8,10 +8,10 @@ import { emailSchema, passwordSchema } from '../lib/schemas/CommonAuthSchemas'
 import { useLoginMutation } from '@/features/auth/signin/model/signInApi'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import GoogleIcon from '@/shared/assets/icons/google/google.svg'
-import GithubIcon from '@/shared/assets/icons/github/gihub.svg'
 import Link from 'next/link'
 import styles from './Signin.module.scss'
+import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -86,12 +86,15 @@ export default function SigninForm() {
       <h1 className={styles.title}>Sign in</h1>
 
       <div className={styles.providers}>
-        <Button className={styles.providerButton}>
-          <GoogleIcon className={styles.icons} />
-        </Button>
-        <Button className={styles.providerButton}>
-          <GithubIcon className={styles.icons} />
-        </Button>
+        {/*<Button className={styles.providerButton}>*/}
+        <GoogleLoginButton />
+
+        {/*<GoogleIcon className={styles.icons} />*/}
+        {/*</Button>*/}
+        {/*<Button className={styles.providerButton}>*/}
+        <GitHubLoginButton />
+        {/*<GithubIcon className={styles.icons} />*/}
+        {/*</Button>*/}
       </div>
 
       <form
@@ -120,7 +123,7 @@ export default function SigninForm() {
         </label>
 
         <div className={styles.forgotWrapper}>
-          <Link href={"/auth/forgotPassword"}>Forgot password</Link>
+          <Link href={'/auth/forgotPassword'}>Forgot password</Link>
         </div>
 
         <Button type="submit" disabled={isLoading || !isValid}>
