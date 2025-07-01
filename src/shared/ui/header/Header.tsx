@@ -32,7 +32,7 @@ export const Header = () => {
     },
   ]
 
-  const [selected, setSelected] = useState<SelectOption['value']>('rus')
+  const [selected, setSelected] = useState<SelectOption['value']>('ue')
 
   return (
     <header className={styles.header}>
