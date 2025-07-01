@@ -12,6 +12,7 @@ import Link from 'next/link'
 import styles from './Signin.module.scss'
 import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
 import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { useRouter } from 'next/navigation'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -22,7 +23,7 @@ type Inputs = z.infer<typeof signinFormSchema>
 
 export default function SigninForm() {
   const [loginTrigger, { isLoading }] = useLoginMutation()
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -42,7 +43,7 @@ export default function SigninForm() {
     try {
       const result = await loginTrigger(data).unwrap()
       console.log('Successful login:', result.accessToken)
-      alert('Successful login:')
+      router.push('/')
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken)
       }
