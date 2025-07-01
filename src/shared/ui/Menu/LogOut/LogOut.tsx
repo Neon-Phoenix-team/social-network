@@ -6,17 +6,31 @@ import { useState } from 'react'
 import s from './LogOut.module.scss'
 import item from '../MenuItem/MenuItem.module.scss'
 import { useLogoutMutation } from '@/features/auth/api/registrationApi'
+import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)
-  const [logout, {isSuccess}] = useLogoutMutation()
+  const [logout, { isSuccess }] = useLogoutMutation()
 
-  const logoutHandler = () => {
-    logout().then(() => {
-      if (isSuccess) {
-        localStorage.removeItem('accessToken')
-      }
-    })
+  const { refetch } = useGetMeQuery()
+
+  // const logoutHandler = () => {
+  //   logout().then(() => {
+  //     if (isSuccess) {
+  //       localStorage.removeItem('accessToken')
+  //     }
+  //   })
+  // }
+  const logoutHandler = async () => {
+    try {
+      await logout().unwrap()
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
+      await refetch()
+      window.location.href = '/'
+    } catch (error) {
+      console.error('Logout failed:', error)
+    }
   }
 
   const closeMenu = () => {
