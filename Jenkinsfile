@@ -22,34 +22,12 @@ pipeline {
         }
         stage('Unit tests') {
             steps {
-                echo "Preparing started..."
+                echo "Running unit tests..."
                 script {
                     sh '''
-                        # Проверяем, установлен ли nvm
-                        if [ -d "$HOME/.nvm" ]; then
-                            export NVM_DIR="$HOME/.nvm"
-                            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                            nvm install --lts
-                            nvm use --lts
-                        else
-                            echo "NVM not found, using system Node.js"
-                        fi
-
-                        # Проверяем версии Node.js и npm
-                        node -v
-                        npm -v
-
-                        # Устанавливаем конкретную версию pnpm (совместимую с вашим проектом)
-                        npm install -g pnpm@9.15.3
-
-                        # Очищаем кэш pnpm (на случай предыдущих неудачных установок)
-                        pnpm store prune || echo "pnpm store prune failed, continuing..."
-
-                        # Устанавливаем зависимости
-                        pnpm install
-
-                        # Запускаем тесты
-                        pnpm run test
+                        # Самый простой вариант - используем npx для pnpm
+                        npx pnpm@latest install
+                        npx pnpm run test
                     '''
                 }
             }
