@@ -4,7 +4,8 @@ import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
-import Menu from '@/shared/ui/Menu/Menu'
+import { Menu } from '@/shared/ui'
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}} cz-shortcut-listen="true">
+      {/*style не нужен*/}
+      <body cz-shortcut-listen="true">
         <StoreProvider>
           <Header />
           <div className="scroll-container">

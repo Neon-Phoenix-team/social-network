@@ -4,16 +4,18 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import { emailSchema, passwordSchema } from '../lib/schemas/CommonAuthSchemas'
-import { useLoginMutation } from '@/features/auth/signin/model/signInApi'
+
+import { useLoginMutation } from '@/features/auth/api/authApi'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import styles from './Signin.module.scss'
-import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
-import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 import { useRouter } from 'next/navigation'
-import { ApiError } from '@/features/auth/signin/model/signInApi.types'
+
+import { emailSchema, passwordSchema } from '@/features/auth/lib/schemas/CommonAuthSchemas'
+import { ApiError } from '@/features/auth/api/authApi.types'
+import { GitHubLoginButton } from '@/features/auth/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { GoogleLoginButton } from '@/features/auth/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -44,7 +46,7 @@ export default function SigninForm() {
     try {
       const result = await loginTrigger(data).unwrap()
       console.log('Successful login:', result.accessToken)
-      router.push('/profile')
+      router.push('/')
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken)
       }
