@@ -11,15 +11,9 @@ export default function Home() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
-  const { data: user, isLoading, isError: isAuthError } = useGetMeQuery()
+  const { data: user, isLoading } = useGetMeQuery()
   const isLoggedIn = !!user
   const email = searchParams?.get('email')
-
-  if (email && code) {
-    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
-    return null
-  }
-
   const [confirm, { isSuccess, isError }] =
     useRegistrationConfirmationMutation()
 
@@ -32,6 +26,11 @@ export default function Home() {
         })
     }
   }, [confirm, code])
+
+  if (email && code) {
+    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
+    return null
+  }
 
   if (code && (isSuccess || isError)) {
     return <EmailVerification showForm isSuccess={isSuccess} />
