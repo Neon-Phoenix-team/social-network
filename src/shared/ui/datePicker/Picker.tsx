@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-// @ts-expect-error/not defined package
+
 import DatePicker, { registerLocale } from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
