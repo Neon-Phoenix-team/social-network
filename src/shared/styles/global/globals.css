@@ -29,82 +29,83 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+    html {
+        color-scheme: dark;
+    }
 }
 
 body {
-  background: rgba(13, 13, 13, 1);
-  color: rgba(255, 255, 255, 1);
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+    background: rgba(13, 13, 13, 1);
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*overflow: hidden;*/
 }
 
 .scroll-container {
-  margin-top: 60px;
-  overflow-y: auto;
-  height: 100%;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-box;
-  display: box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -ms-box-orient: horizontal;
-  box-orient: horizontal;
+    margin-top: 60px;
+    overflow-y: auto;
+    /*height: 100%;*/
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -ms-box-orient: horizontal;
+    box-orient: horizontal;
+    width: 100%;
 }
 
 .content {
-  /* padding: 36px 64px 0 60px; */
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
+    /* padding: 36px 64px 0 60px; */
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+    width: 4px;
+    height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  opacity: 0;
+    opacity: 0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(51, 51, 51, 1);
-  border-radius: 3px;
+    background: rgba(51, 51, 51, 1);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(141, 144, 148, 1);
+    background: rgba(141, 144, 148, 1);
 }

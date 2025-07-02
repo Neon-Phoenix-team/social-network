@@ -4,18 +4,16 @@ import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import { useState } from 'react'
 import s from './LogOut.module.scss'
-import item from '../MenuItem/MenuItem.module.scss'
-import { useLogoutMutation } from '@/features/auth/api/registrationApi'
+import item from '../../../../shared/ui/Menu/MenuItem/MenuItem.module.scss'
+import { useLogoutMutation } from '@/features/auth/api/authApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)
-  const [logout, {isSuccess}] = useLogoutMutation()
+  const [logout] = useLogoutMutation()
 
   const logoutHandler = () => {
     logout().then(() => {
-      if (isSuccess) {
         localStorage.removeItem('accessToken')
-      }
     })
   }
 
@@ -43,7 +41,7 @@ export const LogOut = () => {
           </p>
           <div className={s.buttonGroup}>
             <Button asChild variant={'outlined'}>
-              <Link onClick={closeMenu} href="/">
+              <Link onClick={closeMenu} href="/auth/login">
                 Yes
               </Link>
             </Button>

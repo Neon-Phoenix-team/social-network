@@ -14,3 +14,10 @@ export type RegistrationRequest = {
   email: string,
   password: string,
 }
+
+export type MeResponse ={
+  userId: number,
+  userName: string,
+  email: string,
+  isBlocked: boolean
+}

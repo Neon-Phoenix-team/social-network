@@ -3,7 +3,7 @@
 import s from './Menu.module.scss'
 import { menu } from './menuData'
 import { MenuItem } from './MenuItem/MenuItem'
-import { LogOut } from '@/shared/ui/Menu/LogOut/LogOut'
+import { LogOut } from '@/features/auth/ui/LogOut/LogOut'
 
 
 const Menu = () => {

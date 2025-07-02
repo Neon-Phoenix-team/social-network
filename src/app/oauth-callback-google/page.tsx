@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
-import { useLoginWithGoogleMutation } from '@/features/auth/api/registrationApi'
+import { useLoginWithGoogleMutation } from '@/features/auth/api/authApi'
 
 
 export default function GoogleCallbackPage() {

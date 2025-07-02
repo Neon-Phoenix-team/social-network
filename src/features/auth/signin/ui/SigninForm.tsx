@@ -12,6 +12,7 @@ import GoogleIcon from '@/shared/assets/icons/google/google.svg'
 import GithubIcon from '@/shared/assets/icons/github/gihub.svg'
 import Link from 'next/link'
 import styles from './Signin.module.scss'
+import { useRouter } from 'next/navigation'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -22,6 +23,8 @@ type Inputs = z.infer<typeof signinFormSchema>
 
 export default function SigninForm() {
   const [loginTrigger, { isLoading }] = useLoginMutation()
+
+  const router = useRouter()
 
   const {
     register,
@@ -42,7 +45,7 @@ export default function SigninForm() {
     try {
       const result = await loginTrigger(data).unwrap()
       console.log('Successful login:', result.accessToken)
-      alert('Successful login:')
+      router.push('/profile')
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken)
       }

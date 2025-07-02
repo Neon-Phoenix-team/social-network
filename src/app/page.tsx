@@ -3,19 +3,19 @@ import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
-import { useRegistrationConfirmationMutation } from '@/features/auth/api/registrationApi'
+import { useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
+
+
+
 
 export default function Home() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const code = searchParams?.get('code')
 
-  const [confirm,{isSuccess}] = useRegistrationConfirmationMutation()
+  const [confirm, { isSuccess,isError }] = useRegistrationConfirmationMutation()
 
   const email = searchParams?.get('email')
-
-  const [confirm, { isSuccess, isError }] = useRegistrationConfirmationMutation()
-
 
   useEffect(() => {
     if (code) {
@@ -28,8 +28,8 @@ export default function Home() {
   }, [confirm, code])
 
   if (email && code) {
-    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`);
-    return null; 
+    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
+    return null
   }
 
   if (code && (isSuccess || isError)) {

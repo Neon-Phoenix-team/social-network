@@ -9,7 +9,7 @@ import {
 } from '@/features/auth/lib/schemas/RegisterFormSchema'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import { useRegisterMutation } from '@/features/auth/api/registrationApi'
+import { useRegisterMutation } from '@/features/auth/api/authApi'
 import s from './RegisterForm.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -26,6 +26,7 @@ export const emailSentText = {
 export const RegisterForm = () => {
   const [registration, { isSuccess, reset: resetMutation }] =
     useRegisterMutation()
+
   const {
     register,
     control,
