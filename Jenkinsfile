@@ -22,18 +22,26 @@ pipeline {
         }
         stage('Unit tests') {
              steps {
-                echo "Preparing started..."
-                  script {
-                      sh '''
-                         export NVM_DIR="$HOME/.nvm"
-                         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-                         nvm use --lts
-                         npm install -g pnpm
-                         pnpm install
-                         pnpm run test
-                      '''
-                  }
-             }
+                     echo "Running unit tests..."
+                     script {
+                         sh '''
+                             # Принудительно устанавливаем нужную версию pnpm
+                             npm install -g pnpm@9.15.3
+
+                             # Проверяем версию pnpm
+                             pnpm -v
+
+                             # Чистим кэш (на всякий случай)
+                             pnpm store prune || true
+
+                             # Устанавливаем зависимости
+                             pnpm install
+
+                             # Запускаем тесты
+                             pnpm run test
+                         '''
+                     }
+                 }
         }
         stage('Build docker image') {
             steps {

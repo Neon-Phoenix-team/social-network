@@ -6,6 +6,6 @@ export default function GitHubCallback() {
   const router = useRouter()
   useEffect(() => {
     router.push('/')
-  }, [])
-  return <div>Авторизация через GitHub...</div>;
+  }, [router])
+  return <div>Авторизация через GitHub...</div>
 }
