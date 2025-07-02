@@ -1,27 +1,7 @@
-//
-//
-// /**
-//  * HOF that wraps a base query function with additional functionality for data validation using zod
-//  *
-//  * @param baseQuery The base query function to be wrapped.
-//  * @returns A modified version of the baseQuery with added data validation.
-//  */
-// export const baseQueryWithHandleError =
-//   (baseQuery) => async (args, api, extraOptions) => {
-//     // Call the original baseQuery function with the provided arguments
-//     const result = await baseQuery(args, api, extraOptions);
-//
-//     if (result.error) {
-//       console.log(result.error);
-//     }
-//
-//     return result;
-//   };
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { BaseQueryFn } from '@reduxjs/toolkit/query'
 
 import { handleError } from '@/shared/utils/handleError'
-
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_URL,
   prepareHeaders: headers => {
@@ -31,6 +11,7 @@ const baseQuery = fetchBaseQuery({
     }
     return headers
   },
+  credentials: 'include'
 })
 
 export const baseQueryWithErrorHandler: BaseQueryFn = async (
