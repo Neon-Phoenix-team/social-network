@@ -10,7 +10,7 @@ import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)
-  const [logout, { isSuccess }] = useLogoutMutation()
+  const [logout] = useLogoutMutation()
 
   const { refetch } = useGetMeQuery()
 
