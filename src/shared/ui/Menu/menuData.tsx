@@ -1,21 +1,19 @@
 import { MenuItemPropsType } from './MenuItem/MenuItem'
 import {
+  Bookmark,
+  BookmarkOutline,
+  Home,
   HomeOutline,
+  MessageCircle,
+  MessageCircleOutline,
+  Person,
+  PersonOutline,
   PlusSquare,
   PlusSquareOutline,
-  Home,
-  PersonOutline,
-  MessageCircleOutline,
-  MessageCircle,
-  SearchOutline,
   Search,
-  TrendingUpOutline,
+  SearchOutline,
   TrendingUp,
-  BookmarkOutline,
-  Bookmark,
-  LogOutOutline,
-  LogOut,
-  Person,
+  TrendingUpOutline,
 } from '@/assets/icons/components'
 
 export const menu: MenuItemPropsType[] = [
@@ -61,10 +59,10 @@ export const menu: MenuItemPropsType[] = [
     icon: <BookmarkOutline />,
     iconActive: <Bookmark />,
   },
-  {
-    name: 'Log Out',
-    path: '/#',
-    icon: <LogOutOutline />,
-    iconActive: <LogOut />,
-  },
+  // {
+  //   name: 'Log Out',
+  //   path: '/#',
+  //   icon: <LogOutOutline />,
+  //   iconActive: <LogOut />,
+  // },
 ]

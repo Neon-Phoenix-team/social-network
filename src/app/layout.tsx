@@ -18,11 +18,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body
+      // style={{
+      //   display: 'flex',
+      //   flexDirection: 'row',
+      //   justifyContent: 'space-around',
+      // }}
+      // cz-shortcut-listen="true"
+      >
         <StoreProvider>
           <Header />
+          {/*<Menu />*/}
           <div className="scroll-container">
-            <GlobalLinearProgress/>
+            <GlobalLinearProgress />
             <main className="content">{children}</main>
           </div>
           <ErrorAlert/>

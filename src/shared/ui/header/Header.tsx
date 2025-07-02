@@ -9,11 +9,21 @@ import { SelectOption } from '@/shared/types/types'
 import FlagRussia from '@/assets/icons/components/FlagRussia'
 import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 
 export const Header = () => {
   const router = useRouter()
-  const onClick = () =>{router.push('/auth/signup')}
+  const pathname = usePathname()
+  const { data: user, isLoading } = useGetMeQuery()
+  const isLoggedIn = !!user
+  const onClickSignup = () => {
+    router.push('/auth/signup')
+  }
+  const onClickLogin = () => {
+    router.push('/auth/login')
+  }
+  const shouldShowAuthButtons = pathname === '/' && !isLoggedIn && !isLoading
 
   const language: SelectOption[] = [
     {
@@ -30,7 +40,7 @@ export const Header = () => {
     },
   ]
 
-  const [selected, setSelected] = useState<SelectOption['value']>('rus')
+  const [selected, setSelected] = useState<SelectOption['value']>('ue')
 
   return (
     <header className={styles.header}>
@@ -39,30 +49,35 @@ export const Header = () => {
         <div className={styles.menu}>
           <div className={styles.langButton}>
             <SelectBox
+              className={styles.customTriggerSelect}
               options={language}
               value={selected}
               onValueChange={setSelected}
               idValue={true}
-              // showOnlyDescription={true}
             />
           </div>
-          <AdaptiveHeaderMenu
-            desktopContent={
-              <div className={styles.authButtons}>
-                <Button variant="text">Log in</Button>
-                <Button onClick={onClick}>
-                  Sign up
-                </Button>
-              </div>
-            }
-            mobileContent={
-              <div className={styles.authMobileButtons}>
-                <Button variant="text">Log in</Button>
-                <Button onClick={onClick}>Sign up</Button>
-              </div>
-            }
-            burgerIcon={<DotsHorizontalIcon />}
-          ></AdaptiveHeaderMenu>
+
+          {shouldShowAuthButtons && (
+            <AdaptiveHeaderMenu
+              desktopContent={
+                <div className={styles.authButtons}>
+                  <Button onClick={onClickLogin} variant="text">
+                    Log in
+                  </Button>
+                  <Button onClick={onClickSignup}>Sign up</Button>
+                </div>
+              }
+              mobileContent={
+                <div className={styles.authMobileButtons}>
+                  <Button onClick={onClickLogin} variant="text">
+                    Log in
+                  </Button>
+                  <Button onClick={onClickSignup}>Sign up</Button>
+                </div>
+              }
+              burgerIcon={<DotsHorizontalIcon />}
+            />
+          )}
         </div>
       </div>
     </header>

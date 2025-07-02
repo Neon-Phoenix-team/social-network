@@ -8,10 +8,12 @@ import { emailSchema, passwordSchema } from '../lib/schemas/CommonAuthSchemas'
 import { useLoginMutation } from '@/features/auth/signin/model/signInApi'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import GoogleIcon from '@/shared/assets/icons/google/google.svg'
-import GithubIcon from '@/shared/assets/icons/github/gihub.svg'
 import Link from 'next/link'
 import styles from './Signin.module.scss'
+import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { useRouter } from 'next/navigation'
+import { ApiError } from '@/features/auth/signin/model/signInApi.types'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -22,7 +24,7 @@ type Inputs = z.infer<typeof signinFormSchema>
 
 export default function SigninForm() {
   const [loginTrigger, { isLoading }] = useLoginMutation()
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -42,12 +44,13 @@ export default function SigninForm() {
     try {
       const result = await loginTrigger(data).unwrap()
       console.log('Successful login:', result.accessToken)
-      alert('Successful login:')
+      router.push('/')
       if (result.accessToken) {
         localStorage.setItem('accessToken', result.accessToken)
       }
       reset()
-    } catch (apiError: any) {
+    } catch (error) {
+      const apiError = error as ApiError
       console.error('Authorization error:', apiError)
       if (apiError.status === 400 && apiError.data?.messages) {
         // Handle specific field errors from the API
@@ -86,12 +89,15 @@ export default function SigninForm() {
       <h1 className={styles.title}>Sign in</h1>
 
       <div className={styles.providers}>
-        <Button className={styles.providerButton}>
-          <GoogleIcon className={styles.icons} />
-        </Button>
-        <Button className={styles.providerButton}>
-          <GithubIcon className={styles.icons} />
-        </Button>
+        {/*<Button className={styles.providerButton}>*/}
+        <GoogleLoginButton />
+
+        {/*<GoogleIcon className={styles.icons} />*/}
+        {/*</Button>*/}
+        {/*<Button className={styles.providerButton}>*/}
+        <GitHubLoginButton />
+        {/*<GithubIcon className={styles.icons} />*/}
+        {/*</Button>*/}
       </div>
 
       <form
@@ -120,7 +126,7 @@ export default function SigninForm() {
         </label>
 
         <div className={styles.forgotWrapper}>
-          <Link href={"/auth/forgotPassword"}>Forgot password</Link>
+          <Link href={'/auth/forgotPassword'}>Forgot password</Link>
         </div>
 
         <Button type="submit" disabled={isLoading || !isValid}>
@@ -128,7 +134,7 @@ export default function SigninForm() {
         </Button>
       </form>
 
-      <p className={styles.registerText}>Don't have an account?</p>
+      <p className={styles.registerText}>Don&apos;t have an account?</p>
       <div className={styles.registerLink}>
         <Link href={'/auth/signup'}>Register</Link>
       </div>
