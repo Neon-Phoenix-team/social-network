@@ -1,15 +1,18 @@
 'use client'
+
 import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react' // Import Suspense
 import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
 import { useRegistrationConfirmationMutation } from '@/features/auth/api/registrationApi'
 import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 import Menu from '@/shared/ui/Menu/Menu'
 
-export default function Home() {
+// Create a separate client component that uses searchParams and useRouter
+function HomeContent() {
   const router = useRouter()
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams() // This hook causes the issue
+
   const code = searchParams?.get('code')
   const { data: user, isLoading } = useGetMeQuery()
   const isLoggedIn = !!user
@@ -27,16 +30,21 @@ export default function Home() {
     }
   }, [confirm, code])
 
-  if (email && code) {
-    router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
-    return null
-  }
+  // Redirect logic, ensure it's executed on client
+  // Note: router.push in useEffect is generally safer for complex logic
+  useEffect(() => {
+    if (email && code) {
+      // This redirect will happen after client-side hydration
+      router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
+      // No need to return null here, as it's inside useEffect
+    }
+  }, [email, code, router])
 
   if (code && (isSuccess || isError)) {
     return <EmailVerification showForm isSuccess={isSuccess} />
   }
   if (isLoading) {
-    return <div>Loading...</div>
+    return <div>Loading user data...</div> // Specific loading message for user data
   }
 
   return (
@@ -60,5 +68,14 @@ export default function Home() {
         )}
       </main>
     </div>
+  )
+}
+
+// Wrap the HomeContent in a Suspense boundary
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Загрузка главной страницы...</div>}>
+      <HomeContent />
+    </Suspense>
   )
 }

@@ -3,13 +3,11 @@
 import { useCheckRecoveryCodeMutation } from '@/features/auth/forgotPassword/api/forgotPasswordApi'
 import { ExpiredTokenScreen } from '@/features/auth/forgotPassword/ui/components/ExpiredTokenScreen/ExpiredTokenScreen'
 import { NewPasswordForm } from '@/features/auth/forgotPassword/ui/components/NewPasswordForm/NewPasswordForm'
-import {
-  useRouter,
-  useSearchParams,
-} from 'next/dist/client/components/navigation'
-import { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation' // Correct import path for useRouter and useSearchParams
+import { useEffect, useState, Suspense } from 'react' // Import Suspense
 
-export default function PasswordResetPage() {
+// Create a separate component that uses client-side hooks
+function PasswordResetContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -21,7 +19,11 @@ export default function PasswordResetPage() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleVerify = async () => {
-    if (!code || !email) return
+    if (!code) {
+      router.push('/') // Redirect if no code
+      setIsLoading(false) // Stop loading even if no code
+      return
+    }
 
     try {
       await checkCode({ recoveryCode: code }).unwrap()
@@ -31,13 +33,12 @@ export default function PasswordResetPage() {
       setIsLoading(false)
     }
   }
+
   useEffect(() => {
-    if (!code) {
-      router.push('/')
-      return
-    }
+    // Only run handleVerify if code is available or after initial render
+    // The check for !code and router.push('/') is now inside handleVerify
     handleVerify()
-  }, [code, handleVerify, router])
+  }, [handleVerify]) // Depend on handleVerify to avoid exhaustive-deps warning if it's memoized
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -48,4 +49,13 @@ export default function PasswordResetPage() {
   }
 
   return <NewPasswordForm code={code} />
+}
+
+// Wrap the client component in Suspense
+export default function PasswordResetPage() {
+  return (
+    <Suspense fallback={<div>Загрузка страницы сброса пароля...</div>}>
+      <PasswordResetContent />
+    </Suspense>
+  )
 }
