@@ -3,8 +3,8 @@ import '@/shared/styles/global/globals.css'
 import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
-import Menu from '@/shared/ui/Menu/Menu'
 import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
+import Menu from '@/shared/ui/Menu/Menu'
 
 
 export const metadata: Metadata = {
@@ -22,9 +22,9 @@ export default function RootLayout({
       <body style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}} cz-shortcut-listen="true">
         <StoreProvider>
           <Header />
-          <Menu />
           <div className="scroll-container">
             <GlobalLinearProgress/>
+            <Menu/>
             <main className="content">{children}</main>
           </div>
         </StoreProvider>

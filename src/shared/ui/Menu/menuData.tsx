@@ -13,8 +13,6 @@ import {
   TrendingUp,
   BookmarkOutline,
   Bookmark,
-  LogOutOutline,
-  LogOut,
   Person,
 } from '@/assets/icons/components'
 
@@ -33,7 +31,7 @@ export const menu: MenuItemPropsType[] = [
   },
   {
     name: 'My Profile',
-    path: '/my-profile',
+    path: '/profile',
     icon: <PersonOutline />,
     iconActive: <Person />,
   },
@@ -61,10 +59,4 @@ export const menu: MenuItemPropsType[] = [
     icon: <BookmarkOutline />,
     iconActive: <Bookmark />,
   },
-  // {
-  //   name: 'Log Out',
-  //   path: '/#',
-  //   icon: <LogOutOutline />,
-  //   iconActive: <LogOut />,
-  // },
 ]
