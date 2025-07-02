@@ -13,6 +13,7 @@ import styles from './Signin.module.scss'
 import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
 import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 import { useRouter } from 'next/navigation'
+import { ApiError } from '@/features/auth/signin/model/signInApi.types'
 
 const signinFormSchema = z.object({
   email: emailSchema,
@@ -48,7 +49,8 @@ export default function SigninForm() {
         localStorage.setItem('accessToken', result.accessToken)
       }
       reset()
-    } catch (apiError: any) {
+    } catch (error) {
+      const apiError = error as ApiError
       console.error('Authorization error:', apiError)
       if (apiError.status === 400 && apiError.data?.messages) {
         // Handle specific field errors from the API
@@ -132,7 +134,7 @@ export default function SigninForm() {
         </Button>
       </form>
 
-      <p className={styles.registerText}>Don't have an account?</p>
+      <p className={styles.registerText}>Don&apos;t have an account?</p>
       <div className={styles.registerLink}>
         <Link href={'/auth/signup'}>Register</Link>
       </div>

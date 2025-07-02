@@ -13,3 +13,9 @@ export interface MeResponse {
   email: string
   isBlocked: boolean
 }
+export interface ApiError {
+  status: number
+  data?: {
+    messages?: Array<{ field: string; message: string }> | string
+  }
+}
