@@ -1,5 +1,10 @@
 @use '../../styles/global/variables.scss' as *;
 
+
+.customTriggerSelect {
+  min-width: 172px;
+}
+
 .header {
   position: fixed;
   top: 0;

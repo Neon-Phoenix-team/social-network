@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
 import DatePicker, { registerLocale } from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
@@ -16,7 +17,7 @@ registerLocale('ru', ru)
 
 export const Picker = () => {
   // TODO изменить на ответ от сервера или как там будет! пока просто заглушка
-  const [error, setError] = useState('')
+  const [error] = useState('')
   const [startDate, setStartDate] = useState<Date>(new Date())
   const [currentMonth, setCurrentMonth] = useState<number>(
     new Date().getMonth()
