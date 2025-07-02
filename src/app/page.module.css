@@ -15,6 +15,7 @@
     gap: 64px;
 }
 
+
 @media (prefers-color-scheme: dark) {
     .page {
         --gray-rgb: 255, 255, 255;
@@ -32,6 +33,7 @@
     gap: 32px;
     padding-top: 2.25rem;
     grid-row-start: 2;
+
 }
 
 .main ol {
@@ -44,20 +46,20 @@
 }
 
 .main li:not(:last-of-type) {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .main code {
-  font-family: Inter, sans-serif;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
+    font-family: Inter, sans-serif;
+    background: var(--gray-alpha-100);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: 600;
 }
 
 .ctas {
-  display: flex;
-  gap: 16px;
+    display: flex;
+    gap: 16px;
 }
 
 .ctas a {
@@ -160,5 +162,60 @@ a.secondary {
 @media (prefers-color-scheme: dark) {
     .logo {
         filter: invert();
+    }
+}
+
+/* Новые стили для меню */
+.menuWrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    padding: 20px;
+
+    z-index: 100;
+}
+
+/* Адаптация основного контента когда есть меню */
+.page:has(.menuWrapper) {
+    grid-template-columns: 250px 1fr;
+    justify-items: normal;
+}
+
+.page:has(.menuWrapper) .main {
+    grid-column: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .menuWrapper {
+        width: 200px;
+    }
+
+    .page:has(.menuWrapper) {
+        grid-template-columns: 200px 1fr;
+    }
+
+    .page:has(.menuWrapper) .main {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .menuWrapper {
+        width: 160px;
+    }
+
+    .page:has(.menuWrapper) {
+        grid-template-columns: 160px 1fr;
+    }
+
+    .page:has(.menuWrapper) .main {
+        padding: 16px;
     }
 }
