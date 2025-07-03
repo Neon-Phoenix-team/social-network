@@ -1,6 +1,13 @@
 import { baseApi } from '@/shared/api/baseApi'
-import { MeResponse, RegistrationRequest, RegistrationResponse } from '@/features/auth/api/authApi.types'
+import {
+  MeResponse,
+  RegistrationRequest,
+  RegistrationResponse,
+  SignInArgs,
+  SignInResponse,
+} from '@/features/auth/api/authApi.types'
 import { Email } from '@/features/auth/lib/schemas/CommonAuthSchemas'
+
 
 
 export const AuthApi = baseApi.injectEndpoints({
@@ -11,7 +18,6 @@ export const AuthApi = baseApi.injectEndpoints({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['User']
     }),
     registrationConfirmation: build.mutation<RegistrationResponse, string>({
       query: confirmationCode => ({
@@ -45,15 +51,23 @@ export const AuthApi = baseApi.injectEndpoints({
         return `/auth/github/login?redirect_url=${encodeURIComponent(redirectUrl)}`;
       },
     }),
-    me: build.query<MeResponse, void>({query:()=>'/auth/me',providesTags:['User']}),
+    login: build.mutation<SignInResponse, SignInArgs>({
+      query: body => ({
+        method: 'POST',
+        url: `/auth/login`,
+        body,
+      }),
+    }),
+    getMe: build.query<MeResponse, void>({
+      query: () => `/auth/me`,
+    }),
     logout: build.mutation<RegistrationResponse, void>({
       query: () => ({
         url: 'auth/logout',
         method: 'POST',
       }),
-      invalidatesTags: ['User']
     }),
   }),
 })
 
-export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation,useLoginWithGitHubQuery, useLogoutMutation,useMeQuery} = AuthApi
+export const {useLoginMutation, useGetMeQuery,useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation, useLogoutMutation,} = AuthApi

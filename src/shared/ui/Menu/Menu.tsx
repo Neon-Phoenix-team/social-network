@@ -6,7 +6,7 @@ import { MenuItem } from './MenuItem/MenuItem'
 import { LogOut } from '@/features/auth/ui/LogOut/LogOut'
 
 
-const Menu = () => {
+export const Menu = () => {
 
 
   return (
@@ -31,4 +31,4 @@ const Menu = () => {
     </aside>
   )
 }
-export default Menu
+

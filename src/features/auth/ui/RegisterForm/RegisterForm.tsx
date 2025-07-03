@@ -15,8 +15,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
 import { Title } from '@/shared/ui/Title/Title'
-import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
-import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { GoogleLoginButton } from '@/features/auth/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/features/auth/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+
 
 export const emailSentText = {
   title: 'Email sent',

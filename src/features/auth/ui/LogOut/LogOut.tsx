@@ -1,3 +1,5 @@
+'use client'
+
 import { LogOutOutline } from '@/assets/icons/components'
 import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button/Button'
@@ -12,9 +14,10 @@ export const LogOut = () => {
   const [isActive, setActive] = useState(false)
   const [logout] = useLogoutMutation()
 
-  const { refetch } = useGetMeQuery()
+  const { refetch, data:user } = useGetMeQuery()
 
- const logoutHandler = async () => {
+
+  const logoutHandler = async () => {
     try {
       await logout().unwrap()
       localStorage.removeItem('accessToken')
@@ -46,7 +49,7 @@ export const LogOut = () => {
         <Card open={isActive} action={closeMenu} title={'Log Out'}>
           <p>
             Are you really want to log out of your account{' '}
-            <span>`e-mail` !! </span>?
+            <span>{user?.email}</span>?
           </p>
           <div className={s.buttonGroup}>
             <Button asChild variant={'outlined'}>

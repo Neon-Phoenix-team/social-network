@@ -3,7 +3,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-
+import { useRouter } from 'next/navigation'
 import { emailSchema, passwordSchema } from '../lib/schemas/CommonAuthSchemas'
 import { useLoginMutation } from '@/features/auth/signin/model/signInApi'
 import { Input } from '@/shared/ui/Input/Input'
@@ -14,6 +14,7 @@ import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLog
 import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 import { useRouter } from 'next/navigation'
 import { ApiError } from '@/features/auth/signin/model/signInApi.types'
+import { useRouter } from 'next/navigation'
 
 const signinFormSchema = z.object({
   email: emailSchema,
