@@ -16,6 +16,7 @@ RUN npm install -g pnpm
 
 COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
+COPY .env.production .env
 RUN pnpm run build:production
 
 # Финальный запуск
