@@ -5,8 +5,6 @@ import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
 import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
-import { Menu } from '@/shared/ui'
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,11 +23,11 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           <div className="scroll-container">
-            <GlobalLinearProgress/>
-            <Menu/>
+            <GlobalLinearProgress />
+
             <main className="content">{children}</main>
           </div>
-          <ErrorAlert/>
+          <ErrorAlert />
         </StoreProvider>
       </body>
     </html>
