@@ -6,9 +6,9 @@ import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import { useState } from 'react'
 import s from './LogOut.module.scss'
-import item from '../../../../shared/ui/Menu/MenuItem/MenuItem.module.scss'
+import item from '../MenuItem/MenuItem.module.scss'
 import { useLogoutMutation } from '@/features/auth/api/authApi'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)

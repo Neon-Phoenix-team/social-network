@@ -3,10 +3,9 @@
 import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react' // Import Suspense
-
+import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
 import { useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
-import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
+import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
 
 // Create a separate client component that uses searchParams and useRouter
 function HomeContent() {
@@ -16,9 +15,10 @@ function HomeContent() {
   const code = searchParams?.get('code')
   const { data: user, isLoading } = useGetMeQuery()
   const isLoggedIn = !!user
-  const [confirm, { isSuccess,isError }] = useRegistrationConfirmationMutation()
-
   const email = searchParams?.get('email')
+  const [confirm, { isSuccess, isError }] =
+    useRegistrationConfirmationMutation()
+
 
   useEffect(() => {
     if (code) {
@@ -49,6 +49,11 @@ function HomeContent() {
 
   return (
     <div className={styles.page}>
+       {/*{isLoggedIn && (*/}
+      {/*  <div className={styles.menuWrapper}>*/}
+      {/*    <Menu />*/}
+      {/*  </div>*/}
+      {/*)}*/}
       <main className={styles.main}>
         {isLoggedIn ? (
           <>

@@ -1,8 +1,8 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useLoginWithGoogleMutation } from '@/features/auth/api/authApi'
 import { useEffect, Suspense } from 'react' // Import Suspense
+import { useLoginWithGoogleMutation } from '@/features/auth/api/authApi'
 
 // Create a separate component to use useSearchParams
 function GoogleCallbackContent() {
@@ -19,11 +19,11 @@ function GoogleCallbackContent() {
       redirectUrl: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URL_DEV!,
     })
       .unwrap()
-      .then((data) => {
+      .then(data => {
         localStorage.setItem('user', JSON.stringify(data))
         window.location.assign('/user')
       })
-      .catch((error) => {
+      .catch(error => {
         const message = error?.data?.messages?.[0]?.message
         console.error('Ошибка авторизации через Google:', message)
       })

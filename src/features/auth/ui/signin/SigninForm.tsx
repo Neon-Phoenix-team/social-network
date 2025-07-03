@@ -3,19 +3,18 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-
-
-import { useLoginMutation } from '@/features/auth/api/authApi'
+import { useRouter } from 'next/navigation'
+import { emailSchema, passwordSchema } from '../lib/schemas/CommonAuthSchemas'
+import { useLoginMutation } from '@/features/auth/signin/model/signInApi'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import styles from './Signin.module.scss'
+import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 import { useRouter } from 'next/navigation'
-
-import { emailSchema, passwordSchema } from '@/features/auth/lib/schemas/CommonAuthSchemas'
-import { ApiError } from '@/features/auth/api/authApi.types'
-import { GitHubLoginButton } from '@/features/auth/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
-import { GoogleLoginButton } from '@/features/auth/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { ApiError } from '@/features/auth/signin/model/signInApi.types'
+import { useRouter } from 'next/navigation'
 
 const signinFormSchema = z.object({
   email: emailSchema,
