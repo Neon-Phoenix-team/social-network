@@ -1,5 +1,5 @@
 import s from './SideBarItem.module.scss'
-import { Icon } from '@/shared/ui/icon/Icon'
+// import { Icon } from '@/shared/ui/Icon/Icon'
 
 type SideBarItem = {
   iconId: string
@@ -8,10 +8,10 @@ type SideBarItem = {
   color?: string
 }
 
-export const SideBarItem = ({ iconId, name, href }: SideBarItem) => {
+export const SideBarItem = ({ name, href }: SideBarItem) => {
   return (
     <a href={href} className={s.flexWrapper}>
-      <Icon iconId={iconId} />
+      {/*<Icon iconId={iconId} />*/}
       <span>{name}</span>
     </a>
   )

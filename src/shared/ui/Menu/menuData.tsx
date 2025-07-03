@@ -1,19 +1,19 @@
 import { MenuItemPropsType } from './MenuItem/MenuItem'
 import {
-  Bookmark,
-  BookmarkOutline,
-  Home,
   HomeOutline,
-  MessageCircle,
-  MessageCircleOutline,
-  Person,
-  PersonOutline,
   PlusSquare,
   PlusSquareOutline,
-  Search,
+  Home,
+  PersonOutline,
+  MessageCircleOutline,
+  MessageCircle,
   SearchOutline,
-  TrendingUp,
+  Search,
   TrendingUpOutline,
+  TrendingUp,
+  BookmarkOutline,
+  Bookmark,
+  Person,
 } from '@/assets/icons/components'
 
 export const menu: MenuItemPropsType[] = [
@@ -31,7 +31,7 @@ export const menu: MenuItemPropsType[] = [
   },
   {
     name: 'My Profile',
-    path: '/my-profile',
+    path: '/profile',
     icon: <PersonOutline />,
     iconActive: <Person />,
   },
@@ -59,10 +59,4 @@ export const menu: MenuItemPropsType[] = [
     icon: <BookmarkOutline />,
     iconActive: <Bookmark />,
   },
-  // {
-  //   name: 'Log Out',
-  //   path: '/#',
-  //   icon: <LogOutOutline />,
-  //   iconActive: <LogOut />,
-  // },
 ]

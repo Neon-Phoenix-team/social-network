@@ -1,26 +1,22 @@
+'use client'
+
 import { LogOutOutline } from '@/assets/icons/components'
 import { Card } from '@/shared/ui/Card/Card'
 import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import { useState } from 'react'
 import s from './LogOut.module.scss'
-import item from '../MenuItem/MenuItem.module.scss'
-import { useLogoutMutation } from '@/features/auth/api/registrationApi'
-import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
+import item from '../../../../shared/ui/Menu/MenuItem/MenuItem.module.scss'
+import { useLogoutMutation } from '@/features/auth/api/authApi'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)
   const [logout] = useLogoutMutation()
 
-  const { refetch } = useGetMeQuery()
+  const { refetch, data:user } = useGetMeQuery()
 
-  // const logoutHandler = () => {
-  //   logout().then(() => {
-  //     if (isSuccess) {
-  //       localStorage.removeItem('accessToken')
-  //     }
-  //   })
-  // }
+
   const logoutHandler = async () => {
     try {
       await logout().unwrap()
@@ -53,11 +49,11 @@ export const LogOut = () => {
         <Card open={isActive} action={closeMenu} title={'Log Out'}>
           <p>
             Are you really want to log out of your account{' '}
-            <span>`e-mail` !! </span>?
+            <span>{user?.email}</span>?
           </p>
           <div className={s.buttonGroup}>
             <Button asChild variant={'outlined'}>
-              <Link onClick={closeMenu} href="/">
+              <Link onClick={closeMenu} href="/auth/login">
                 Yes
               </Link>
             </Button>

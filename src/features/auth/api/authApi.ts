@@ -1,10 +1,16 @@
 import { baseApi } from '@/shared/api/baseApi'
-import { RegistrationRequest, RegistrationResponse } from '@/features/auth/api/registrationApi.types'
+import {
+  MeResponse,
+  RegistrationRequest,
+  RegistrationResponse,
+  SignInArgs,
+  SignInResponse,
+} from '@/features/auth/api/authApi.types'
 import { Email } from '@/features/auth/lib/schemas/CommonAuthSchemas'
 
 
-export const RegistrationApi = baseApi.injectEndpoints({
-  overrideExisting: true,
+
+export const AuthApi = baseApi.injectEndpoints({
   endpoints: build => ({
     register: build.mutation<RegistrationResponse, RegistrationRequest>({
       query: body => ({
@@ -45,6 +51,16 @@ export const RegistrationApi = baseApi.injectEndpoints({
         return `/auth/github/login?redirect_url=${encodeURIComponent(redirectUrl)}`;
       },
     }),
+    login: build.mutation<SignInResponse, SignInArgs>({
+      query: body => ({
+        method: 'POST',
+        url: `/auth/login`,
+        body,
+      }),
+    }),
+    getMe: build.query<MeResponse, void>({
+      query: () => `/auth/me`,
+    }),
     logout: build.mutation<RegistrationResponse, void>({
       query: () => ({
         url: 'auth/logout',
@@ -54,4 +70,4 @@ export const RegistrationApi = baseApi.injectEndpoints({
   }),
 })
 
-export const {useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation,useLoginWithGitHubQuery, useLogoutMutation} = RegistrationApi
+export const {useLoginMutation, useGetMeQuery,useRegisterMutation, useRegistrationConfirmationMutation, useEmailResendingMutation,useLoginWithGoogleMutation, useLogoutMutation,} = AuthApi

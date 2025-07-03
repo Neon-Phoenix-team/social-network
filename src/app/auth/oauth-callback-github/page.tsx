@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function GitHubCallback() {
   const router = useRouter()
   useEffect(() => {
-    router.push('/')
+    router.push('/profile')
   }, [router])
-  return <div>Авторизация через GitHub...</div>
+  return <div>Авторизация через GitHub...</div>;
 }

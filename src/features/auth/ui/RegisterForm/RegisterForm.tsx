@@ -9,16 +9,17 @@ import {
 } from '@/features/auth/lib/schemas/RegisterFormSchema'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import { useRegisterMutation } from '@/features/auth/api/registrationApi'
+import { useRegisterMutation } from '@/features/auth/api/authApi'
 import s from './RegisterForm.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
 import { Title } from '@/shared/ui/Title/Title'
-import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
-import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { GoogleLoginButton } from '@/features/auth/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/features/auth/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
 
-const emailSentText = {
+
+export const emailSentText = {
   title: 'Email sent',
   text: 'We have sent a link to confirm your email to ',
 }
@@ -26,6 +27,7 @@ const emailSentText = {
 export const RegisterForm = () => {
   const [registration, { isSuccess, reset: resetMutation }] =
     useRegisterMutation()
+
   const {
     register,
     control,
@@ -70,7 +72,7 @@ export const RegisterForm = () => {
   return (
     <div className={s.formWrapper}>
       <Card open={isSuccess} title={emailSentText.title} action={resetMutation}>
-        <span className={s.text}>
+        <span>
           {emailSentText.text}
           {email}
         </span>
@@ -119,8 +121,8 @@ export const RegisterForm = () => {
                   label={
                     <>
                       I agree to the{' '}
-                      <Link href={'/TermsOfService'}>Terms of Service</Link> and{' '}
-                      <Link href={'/Privacy'}>Privacy Policy</Link>
+                      <Link href={'/auth/signup/termsOfService'}>Terms of Service</Link> and{' '}
+                      <Link href={'/auth/signup/privacy'}>Privacy Policy</Link>
                     </>
                   }
                   onChange={field.onChange}
