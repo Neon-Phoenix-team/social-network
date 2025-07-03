@@ -7,5 +7,5 @@ export default function GitHubCallback() {
   useEffect(() => {
     router.push('/')
   }, [router])
-  return <div>Авторизация через GitHub...</div>
+  return <div>Авторизация через GitHub...</div>;
 }

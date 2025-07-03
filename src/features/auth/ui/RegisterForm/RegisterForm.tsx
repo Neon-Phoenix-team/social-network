@@ -9,14 +9,15 @@ import {
 } from '@/features/auth/lib/schemas/RegisterFormSchema'
 import { Input } from '@/shared/ui/Input/Input'
 import { Button } from '@/shared/ui/Button/Button'
-import { useRegisterMutation } from '@/features/auth/api/registrationApi'
+import { useRegisterMutation } from '@/features/auth/api/authApi'
 import s from './RegisterForm.module.scss'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '@/shared/ui/Card/Card'
 import { Title } from '@/shared/ui/Title/Title'
-import { GoogleLoginButton } from '@/shared/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
-import { GitHubLoginButton } from '@/shared/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+import { GoogleLoginButton } from '@/features/auth/ui/OAuth/GoogleLoginButton/GoogleLoginButton'
+import { GitHubLoginButton } from '@/features/auth/ui/OAuth/GitHubLoginButton/GitHubLoginButton'
+
 
 export const emailSentText = {
   title: 'Email sent',
@@ -26,6 +27,7 @@ export const emailSentText = {
 export const RegisterForm = () => {
   const [registration, { isSuccess, reset: resetMutation }] =
     useRegisterMutation()
+
   const {
     register,
     control,

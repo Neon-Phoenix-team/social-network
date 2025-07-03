@@ -18,7 +18,7 @@ interface TabsProps {
   className?: string
 }
 
-const TabsComponent = ({
+export const TabsComponent = ({
   tabs,
   defaultValue,
   onValueChange,
@@ -46,4 +46,4 @@ const TabsComponent = ({
   )
 }
 
-export default TabsComponent
+

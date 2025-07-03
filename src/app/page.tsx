@@ -4,9 +4,8 @@ import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react' // Import Suspense
 import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
-import { useRegistrationConfirmationMutation } from '@/features/auth/api/registrationApi'
+import { useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
-import Menu from '@/shared/ui/Menu/Menu'
 
 // Create a separate client component that uses searchParams and useRouter
 function HomeContent() {
@@ -41,7 +40,7 @@ function HomeContent() {
   }, [email, code, router])
 
   if (code && (isSuccess || isError)) {
-    return <EmailVerification showForm isSuccess={isSuccess} />
+    return <EmailVerification showForm isEmailSuccess={isSuccess} />
   }
   if (isLoading) {
     return <div>Loading user data...</div> // Specific loading message for user data
@@ -49,11 +48,11 @@ function HomeContent() {
 
   return (
     <div className={styles.page}>
-      {isLoggedIn && (
-        <div className={styles.menuWrapper}>
-          <Menu />
-        </div>
-      )}
+       {/*{isLoggedIn && (*/}
+      {/*  <div className={styles.menuWrapper}>*/}
+      {/*    <Menu />*/}
+      {/*  </div>*/}
+      {/*)}*/}
       <main className={styles.main}>
         {isLoggedIn ? (
           <>

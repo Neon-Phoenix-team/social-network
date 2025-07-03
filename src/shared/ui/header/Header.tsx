@@ -10,7 +10,7 @@ import FlagRussia from '@/assets/icons/components/FlagRussia'
 import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 
 export const Header = () => {
   const router = useRouter()

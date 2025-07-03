@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react' // Import Suspense
-import { useLoginWithGoogleMutation } from '@/features/auth/api/registrationApi'
+import { useLoginWithGoogleMutation } from '@/features/auth/api/authApi'
 
 // Create a separate component to use useSearchParams
 function GoogleCallbackContent() {

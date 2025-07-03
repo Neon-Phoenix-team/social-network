@@ -10,7 +10,7 @@ interface AlertProps {
   message: string
 }
 
-export default function Alert({ type, message }: AlertProps) {
+export const Alert = ({ type, message }: AlertProps)=> {
   const [open, setOpen] = useState(true)
 
   return (
