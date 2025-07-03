@@ -20,6 +20,13 @@ pipeline {
                 checkout scm
             }
         }
+           stage('Prepare .env.production') {
+                    steps {
+                        withCredentials([file(credentialsId: 'ENV_PROD_FILE', variable: 'ENV_FILE')]) {
+                            sh 'cp $ENV_FILE .env.production'
+                        }
+                    }
+                }
         stage('Unit tests') {
              steps {
                      echo "Running unit tests..."
