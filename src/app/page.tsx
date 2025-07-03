@@ -3,9 +3,9 @@
 import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, Suspense } from 'react' // Import Suspense
-import { EmailVerification } from '@/shared/ui/EmailVerification/EmailVerification'
-import { useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
-import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
+import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
+import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
+
 
 // Create a separate client component that uses searchParams and useRouter
 function HomeContent() {
