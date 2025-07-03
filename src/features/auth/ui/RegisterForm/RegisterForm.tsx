@@ -62,11 +62,12 @@ export const RegisterForm = () => {
         reset()
       })
       .catch(err => {
+        if (err.status === 400){
         setError(err.data.messages[0].field, {
           type: 'string',
           message: err.data.messages[0].message,
         })
-      })
+      }})
   }
 
   return (
@@ -128,8 +129,6 @@ export const RegisterForm = () => {
                   onChange={field.onChange}
                   checked={field.value}
                 />
-                {/*  <Alert message={errors.termsAgreement.message} type="error" />*/}
-                {/*)} ❗уточнить, нужно ли ошибку показывать*/}
               </>
             )
           }}

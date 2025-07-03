@@ -3,6 +3,7 @@ import '@/shared/styles/global/globals.css'
 import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
+import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
 import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
 import { Menu } from '@/shared/ui'
 
@@ -28,6 +29,7 @@ export default function RootLayout({
             <Menu/>
             <main className="content">{children}</main>
           </div>
+          <ErrorAlert/>
         </StoreProvider>
       </body>
     </html>
