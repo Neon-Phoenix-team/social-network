@@ -6,15 +6,14 @@ import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import { useState } from 'react'
 import s from './LogOut.module.scss'
-import item from '../MenuItem/MenuItem.module.scss'
-import { useLogoutMutation } from '@/features/auth/api/authApi'
-import { useGetMeQuery } from '@/features/auth/signin/model/signInApi'
+import item from '@/shared/ui/Menu/Menu.module.scss'
+import { useGetMeQuery, useLogoutMutation } from '@/features/auth/api/authApi'
 
 export const LogOut = () => {
   const [isActive, setActive] = useState(false)
   const [logout] = useLogoutMutation()
 
-  const { refetch, data:user } = useGetMeQuery()
+  const { refetch, data: user } = useGetMeQuery()
 
 
   const logoutHandler = async () => {

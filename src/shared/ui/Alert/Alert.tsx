@@ -7,10 +7,10 @@ import clsx from 'clsx'
 
 interface AlertProps {
   type: 'success' | 'error'
-  message: string
+  message: string | null
 }
 
-export const Alert = ({ type, message }: AlertProps)=> {
+export const Alert = ({ type, message }: AlertProps) => {
   const [open, setOpen] = useState(true)
 
   return (
