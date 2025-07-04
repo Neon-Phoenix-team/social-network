@@ -31,7 +31,8 @@ export const Alert = ({
     }
   }, [externalOpen, message, duration])
 
-  if (!message) return null // Не рендерим, если нет сообщения
+export const Alert = ({ type, message }: AlertProps)=> {
+  const [open, setOpen] = useState(true)
 
   return (
     <Toast.Provider swipeDirection="right">
