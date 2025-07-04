@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import '@/shared/styles/global/globals.css'
-import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 import { LayoutContent } from '@/shared/ui/LayoutContent/LayoutContent'
@@ -15,7 +14,6 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode
 }>) {
-
   return (
     <html lang="en">
       <body cz-shortcut-listen="true">

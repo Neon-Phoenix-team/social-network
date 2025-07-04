@@ -31,9 +31,6 @@ export const Alert = ({
     }
   }, [externalOpen, message, duration])
 
-export const Alert = ({ type, message }: AlertProps)=> {
-  const [open, setOpen] = useState(true)
-
   return (
     <Toast.Provider swipeDirection="right">
       <Toast.Root
