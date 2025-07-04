@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import '@/shared/styles/global/globals.css'
-import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
-import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
-import { GlobalLinearProgress, Menu } from '@/shared/ui'
+import { LayoutContent } from '@/shared/ui/LayoutContent/LayoutContent'
 
 export const metadata: Metadata = {
   title: 'Inctagram',
@@ -17,17 +15,12 @@ export default function RootLayout({
   children: ReactNode
 }>) {
 
+
   return (
     <html lang="en">
       <body cz-shortcut-listen="true">
         <StoreProvider>
-          <Header />
-          <div className="scroll-container">
-            <GlobalLinearProgress />
-            <Menu />
-            <main className="content">{children}</main>
-          </div>
-          <ErrorAlert />
+          <LayoutContent>{children}</LayoutContent>
         </StoreProvider>
       </body>
     </html>
