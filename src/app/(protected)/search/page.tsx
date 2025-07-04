@@ -2,8 +2,8 @@
 
 import { Title } from '@/shared/ui/Title/Title'
 
-const Page = () => {
+const Search = () => {
   return <Title>Search Page </Title>
 }
 
-export default Page
+export default Search
