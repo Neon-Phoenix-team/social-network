@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './page.module.css'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, Suspense, useState } from 'react'
 import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
