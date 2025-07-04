@@ -1,61 +1,53 @@
 'use client'
 
-import { useCheckRecoveryCodeMutation } from '@/features/auth/forgotPassword/api/forgotPasswordApi'
+import { Suspense, useCallback, useEffect } from 'react'
+import { LinearProgress } from '@/shared/ui'
 import { ExpiredTokenScreen } from '@/features/auth/forgotPassword/ui/components/ExpiredTokenScreen/ExpiredTokenScreen'
 import { NewPasswordForm } from '@/features/auth/forgotPassword/ui/components/NewPasswordForm/NewPasswordForm'
-import { useRouter, useSearchParams } from 'next/navigation' // Correct import path for useRouter and useSearchParams
-import { useEffect, useState, Suspense } from 'react' // Import Suspense
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useCheckRecoveryCodeMutation } from '@/features/auth/forgotPassword/api/forgotPasswordApi'
 
-// Create a separate component that uses client-side hooks
+export default function PasswordResetPage() {
+  return (
+    <Suspense fallback={<LinearProgress />}>
+      <PasswordResetContent />
+    </Suspense>
+  )
+}
+
 function PasswordResetContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const code = searchParams?.get('code')
   const email = searchParams?.get('email')
 
-  const [checkCode, { isError }] = useCheckRecoveryCodeMutation()
+  const [checkCode, { isError, isSuccess }] = useCheckRecoveryCodeMutation()
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleVerify = async () => {
-    if (!code) {
-      router.push('/') // Redirect if no code
-      setIsLoading(false) // Stop loading even if no code
-      return
-    }
+  const handleVerify = useCallback(async () => {
+    if (!code || !email) return
 
     try {
       await checkCode({ recoveryCode: code }).unwrap()
     } catch (error) {
       console.error('Token verification failed:', error)
-    } finally {
-      setIsLoading(false)
     }
-  }
+  }, [code, email, checkCode])
 
   useEffect(() => {
-    // Only run handleVerify if code is available or after initial render
-    // The check for !code and router.push('/') is now inside handleVerify
+    if (!code && !email) {
+      router.push('/')
+      return
+    }
     handleVerify()
-  }, [handleVerify]) // Depend on handleVerify to avoid exhaustive-deps warning if it's memoized
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  }, [code, email, router, handleVerify])
 
   if (isError) {
     return <ExpiredTokenScreen email={email} />
   }
+  if (isSuccess) {
+    return <NewPasswordForm code={code} />
+  }
 
-  return <NewPasswordForm code={code} />
-}
-
-// Wrap the client component in Suspense
-export default function PasswordResetPage() {
-  return (
-    <Suspense fallback={<div>Загрузка страницы сброса пароля...</div>}>
-      <PasswordResetContent />
-    </Suspense>
-  )
+  return <LinearProgress />
 }

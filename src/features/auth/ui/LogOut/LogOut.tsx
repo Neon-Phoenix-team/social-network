@@ -13,7 +13,8 @@ export const LogOut = () => {
   const [isActive, setActive] = useState(false)
   const [logout] = useLogoutMutation()
 
-  const { refetch, data: user } = useGetMeQuery()
+  const { refetch, data:user } = useGetMeQuery()
+
 
   const logoutHandler = async () => {
     try {

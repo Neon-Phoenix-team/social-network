@@ -43,7 +43,7 @@ export const NewPasswordForm = ({ code }: PropsType) => {
         <h2>Create New Password</h2>
         <div className={styles.inputsContainer}>
           <div className={styles.inputPass}>
-            <label htmlFor="newPassword" >
+            <label>
               New password
             </label>
             <Input
@@ -56,7 +56,7 @@ export const NewPasswordForm = ({ code }: PropsType) => {
             )}
           </div>
           <div className={styles.inputPass}>
-            <label htmlFor="confirmPassword">
+            <label>
               Password confirmation
             </label>
             <Input
