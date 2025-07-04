@@ -4,9 +4,7 @@ import { Header } from '@/shared/ui/header/Header'
 import { StoreProvider } from '@/shared/ui/StoreProvider/StoreProvider'
 import { ReactNode } from 'react'
 import { ErrorAlert } from '@/shared/ui/ErrorAlert/ErrorAlert'
-import { GlobalLinearProgress } from '@/shared/ui/GlobalLinearProgress/GlobalLinearProgress'
 import { Menu } from '@/shared/ui'
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,18 +16,17 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode
 }>) {
+
   return (
     <html lang="en">
-      {/*style не нужен*/}
       <body cz-shortcut-listen="true">
         <StoreProvider>
           <Header />
           <div className="scroll-container">
-            <GlobalLinearProgress/>
-            <Menu/>
+            <Menu />
             <main className="content">{children}</main>
           </div>
-          <ErrorAlert/>
+          <ErrorAlert />
         </StoreProvider>
       </body>
     </html>

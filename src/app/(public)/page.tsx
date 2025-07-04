@@ -2,58 +2,64 @@
 
 import styles from './page.module.css'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, Suspense } from 'react' // Import Suspense
+import { useEffect, Suspense, useState } from 'react'
 import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
 
-
-// Create a separate client component that uses searchParams and useRouter
 function HomeContent() {
   const router = useRouter()
-  const searchParams = useSearchParams() // This hook causes the issue
-
-  const code = searchParams?.get('code')
-  const { data: user, isLoading } = useGetMeQuery()
+  const [isReady, setIsReady] = useState(false)
+  const [params, setParams] = useState({ code: '', email: '' })
+  const { data: user } = useGetMeQuery()
   const isLoggedIn = !!user
-  const email = searchParams?.get('email')
   const [confirm, { isSuccess, isError }] =
     useRegistrationConfirmationMutation()
 
   useEffect(() => {
-    if (code) {
-      confirm(code)
+    const searchParams = new URLSearchParams(window.location.search)
+    setParams({
+      code: searchParams.get('code') || '',
+      email: searchParams.get('email') || ''
+    })
+    setIsReady(true)
+  }, [])
+
+  useEffect(() => {
+    if (params.code) {
+      confirm(params.code)
         .unwrap()
         .catch(err => {
           console.log(err)
         })
     }
-  }, [confirm, code])
+  }, [confirm, params.code])
 
-  // Redirect logic, ensure it's executed on client
-  // Note: router.push in useEffect is generally safer for complex logic
-  useEffect(() => {
-    if (email && code) {
-      // This redirect will happen after client-side hydration
-      router.push(`/auth/recoveryPassword/?code=${code}&email=${email}`)
-      // No need to return null here, as it's inside useEffect
-    }
-  }, [email, code, router])
+  if (params.email && params.code) {
+    router.push(`/auth/recoveryPassword/?code=${params.code}&email=${params.email}`)
+  }
 
-  if (code && (isSuccess || isError)) {
+  if (params.code && (isSuccess || isError)) {
     return <EmailVerification showForm isEmailSuccess={isSuccess} />
   }
-  if (isLoading) {
-    return <div>Loading user data...</div> // Specific loading message for user data
+
+  if (!isReady) {
+    return (
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <h1>Loading user data...</h1>
+        </main>
+      </div>
+    )
   }
 
   return (
     <div className={styles.page}>
-       {/*{isLoggedIn && (*/}
+      {/*{isLoggedIn && (*/}
       {/*  <div className={styles.menuWrapper}>*/}
       {/*    <Menu />*/}
       {/*  </div>*/}
       {/*)}*/}
-      <main className={styles.main}>
+      <div className={styles.main}>
         {isLoggedIn ? (
           <>
             <h1>Добро пожаловать, {user.userName}!</h1>
@@ -65,15 +71,14 @@ function HomeContent() {
             <p>Пожалуйста, войдите или зарегистрируйтесь</p>
           </>
         )}
-      </main>
+      </div>
     </div>
   )
 }
 
-// Wrap the HomeContent in a Suspense boundary
 export default function Home() {
   return (
-    <Suspense fallback={<div>Загрузка главной страницы...</div>}>
+    <Suspense fallback={<div>Loading user data...</div>}>
       <HomeContent />
     </Suspense>
   )
