@@ -1,8 +1,6 @@
 @use '../../styles/global/variables.scss' as *;
 
 .aside {
-  position: fixed;
-  left: 0;
   font-family: Inter, serif;
   font-weight: 500;
   font-size: 14px;
@@ -29,5 +27,4 @@
   flex-direction: column;
   justify-content: flex-end;
   font-size: 14px;
-  margin-top: 180px;
 }
