@@ -10,20 +10,26 @@ import FlagRussia from '@/assets/icons/components/FlagRussia'
 import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useGetMeQuery } from '@/features/auth/api/authApi'
+import { useAuthGuard } from '@/shared/hooks'
 
 
 export const Header = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const { data: user, isLoading } = useGetMeQuery()
+  const {  user, isLoading } = useAuthGuard()
   const isLoggedIn = !!user
+
   const onClickSignup = () => {
     router.push('/auth/signup')
   }
   const onClickLogin = () => {
     router.push('/auth/login')
   }
+  const onClickLogo = () => {
+    router.push('/')
+  }
+
+
   const shouldShowAuthButtons = pathname === '/' && !isLoggedIn && !isLoading
 
   const language: SelectOption[] = [
@@ -46,7 +52,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        <h2>Inctagram</h2>
+        <h2 onClick={onClickLogo}>Inctagram</h2>
         <div className={styles.menu}>
           <div className={styles.langButton}>
             <SelectBox

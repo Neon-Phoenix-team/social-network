@@ -3,14 +3,16 @@
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
 import { useEffect, Suspense, useState } from 'react'
-import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
+import {  useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
+import { useAuthGuard } from '@/shared/hooks'
+
 
 function HomeContent() {
   const router = useRouter()
-  const [isReady, setIsReady] = useState(false)
+  const [isParamsReady, setIsParamsReady] = useState(false)
   const [params, setParams] = useState({ code: '', email: '' })
-  const { data: user } = useGetMeQuery()
+  const { user, isLoading } = useAuthGuard()
   const isLoggedIn = !!user
   const [confirm, { isSuccess, isError }] =
     useRegistrationConfirmationMutation()
@@ -21,7 +23,7 @@ function HomeContent() {
       code: searchParams.get('code') || '',
       email: searchParams.get('email') || ''
     })
-    setIsReady(true)
+    setIsParamsReady(true)
   }, [])
 
   useEffect(() => {
@@ -42,7 +44,7 @@ function HomeContent() {
     return <EmailVerification showForm isEmailSuccess={isSuccess} />
   }
 
-  if (!isReady) {
+  if (!isParamsReady || isLoading) {
     return (
       <div className={styles.page}>
         <main className={styles.main}>
@@ -54,11 +56,6 @@ function HomeContent() {
 
   return (
     <div className={styles.page}>
-      {/*{isLoggedIn && (*/}
-      {/*  <div className={styles.menuWrapper}>*/}
-      {/*    <Menu />*/}
-      {/*  </div>*/}
-      {/*)}*/}
       <div className={styles.main}>
         {isLoggedIn ? (
           <>
