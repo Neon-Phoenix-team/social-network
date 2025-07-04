@@ -6,7 +6,7 @@ import { Button } from '@/shared/ui/Button/Button'
 import Link from 'next/link'
 import { useState } from 'react'
 import s from './LogOut.module.scss'
-import item from '@/shared/ui/Menu/Menu.module.scss'
+import item from '@/shared/ui/Menu/MenuItem/MenuItem.module.scss'
 import { useGetMeQuery, useLogoutMutation } from '@/features/auth/api/authApi'
 
 export const LogOut = () => {
