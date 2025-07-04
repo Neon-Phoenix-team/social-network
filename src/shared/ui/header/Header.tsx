@@ -11,7 +11,7 @@ import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useGetMeQuery } from '@/features/auth/api/authApi'
-import { GlobalLinearProgress } from '../GlobalLinearProgress/GlobalLinearProgress'
+
 
 export const Header = () => {
   const router = useRouter()
@@ -81,7 +81,6 @@ export const Header = () => {
           )}
         </div>
       </div>
-      <GlobalLinearProgress />
     </header>
   )
 }

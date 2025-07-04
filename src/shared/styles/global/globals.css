@@ -72,10 +72,8 @@ body {
 .scroll-container {
     margin-top: 60px;
     overflow-y: auto;
+    width: 100%;
     height: 100%;
-    display: flex; /* Updated to modern Flexbox */
-    flex-direction: row; /* Equivalent to box-orient: horizontal for modern Flexbox */
-    /* -webkit-box-orient and similar are no longer needed */
 }
 
 .content {
