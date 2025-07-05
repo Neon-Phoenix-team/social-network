@@ -7,6 +7,7 @@ import { Card } from "@/shared/ui/Card/Card";
 import { Await } from "@/shared/assets/icons/auth/Await";
 import { useState } from "react";
 import { isApiError } from "@/features/auth/forgotPassword/api/forgotPasswordApi.types";
+import { PASSWORD_RESET_BASE_URL } from "../../../constants/urls";
 
 type PropsType = {
   email?: string | null
@@ -17,8 +18,6 @@ const modalText = {
   text: 'We have sent a link to confirm your email to '
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
-
 export const ExpiredTokenScreen = ({ email }: PropsType) => {
   const [resendEmailMessage, { isSuccess, reset: resetMutation }] = usePasswordRecoveryResendingMutation()
   const [serverErrorMessage, setServerErrorMessage] = useState<string | null>(null)
@@ -26,7 +25,7 @@ export const ExpiredTokenScreen = ({ email }: PropsType) => {
   const handleResend = async () => {
     try {
       if (email) {
-        await resendEmailMessage({ email, baseUrl }).unwrap()
+        await resendEmailMessage({ email, baseUrl: PASSWORD_RESET_BASE_URL }).unwrap()
         setServerErrorMessage(null)
       }
     } catch (error) {

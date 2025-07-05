@@ -1,18 +1,14 @@
 'use client'
 
 import styles from './page.module.css'
-import { useRouter } from 'next/navigation'
 import { useEffect, Suspense, useState } from 'react'
-import {  useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
+import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
-import { useAuthGuard } from '@/shared/hooks'
-
 
 function HomeContent() {
-  const router = useRouter()
   const [isParamsReady, setIsParamsReady] = useState(false)
-  const [params, setParams] = useState({ code: '', email: '' })
-  const { user, isLoading } = useAuthGuard()
+  const [params, setParams] = useState({ code: '' })
+  const { data: user, isLoading } = useGetMeQuery()
   const isLoggedIn = !!user
   const [confirm, { isSuccess, isError }] =
     useRegistrationConfirmationMutation()
@@ -20,8 +16,7 @@ function HomeContent() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
     setParams({
-      code: searchParams.get('code') || '',
-      email: searchParams.get('email') || ''
+      code: searchParams.get('code') || ''
     })
     setIsParamsReady(true)
   }, [])
@@ -35,10 +30,6 @@ function HomeContent() {
         })
     }
   }, [confirm, params.code])
-
-  if (params.email && params.code) {
-    router.push(`/auth/recoveryPassword/?code=${params.code}&email=${params.email}`)
-  }
 
   if (params.code && (isSuccess || isError)) {
     return <EmailVerification showForm isEmailSuccess={isSuccess} />

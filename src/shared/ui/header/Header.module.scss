@@ -29,6 +29,7 @@
     font-size: 26px;
     line-height: 36px;
     color: color($light, 100);
+    cursor: pointer;
   }
 
   @media (max-width: 640px) {
@@ -40,6 +41,7 @@
   display: flex;
   align-items: center;
 }
+
 .langButton {
   margin-right: 36px;
 
@@ -47,6 +49,7 @@
     margin-right: 16px;
   }
 }
+
 .authButtons {
   display: flex;
   gap: 24px;
