@@ -1,23 +1,41 @@
 'use client'
 
 import * as Toast from '@radix-ui/react-toast'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Alert.module.scss'
 import clsx from 'clsx'
 
 interface AlertProps {
   type: 'success' | 'error'
   message: string | null
+  isOpen: boolean
+  duration?: number
 }
 
-export const Alert = ({ type, message }: AlertProps) => {
-  const [open, setOpen] = useState(true)
+export const Alert = ({
+  type,
+  message,
+  isOpen: externalOpen,
+  duration,
+}: AlertProps) => {
+  const [internalOpen, setInternalOpen] = useState(false)
+
+  // Синхронизируем внутреннее состояние с внешним isOpen
+  useEffect(() => {
+    if (externalOpen && message) {
+      setInternalOpen(true)
+      if (duration) {
+        const timer = setTimeout(() => setInternalOpen(false), duration)
+        return () => clearTimeout(timer)
+      }
+    }
+  }, [externalOpen, message, duration])
 
   return (
     <Toast.Provider swipeDirection="right">
       <Toast.Root
-        open={open}
-        onOpenChange={setOpen}
+        open={internalOpen}
+        onOpenChange={setInternalOpen}
         className={clsx(styles.alert, {
           [styles.success]: type === 'success',
           [styles.error]: type === 'error',

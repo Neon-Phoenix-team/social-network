@@ -1,47 +1,53 @@
-'use client';
+'use client'
 
-import { useCheckRecoveryCodeMutation } from "@/features/auth/forgotPassword/api/forgotPasswordApi";
-import { ExpiredTokenScreen } from "@/features/auth/forgotPassword/ui/components/ExpiredTokenScreen/ExpiredTokenScreen";
-import { NewPasswordForm } from "@/features/auth/forgotPassword/ui/components/NewPasswordForm/NewPasswordForm";
-import { LinearProgress } from "@/shared/ui";
-import { useRouter, useSearchParams } from "next/dist/client/components/navigation";
-import { useEffect } from "react";
+import { Suspense, useCallback, useEffect } from 'react'
+import { LinearProgress } from '@/shared/ui'
+import { ExpiredTokenScreen } from '@/features/auth/forgotPassword/ui/components/ExpiredTokenScreen/ExpiredTokenScreen'
+import { NewPasswordForm } from '@/features/auth/forgotPassword/ui/components/NewPasswordForm/NewPasswordForm'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useCheckRecoveryCodeMutation } from '@/features/auth/forgotPassword/api/forgotPasswordApi'
 
 export default function PasswordResetPage() {
-  const searchParams = useSearchParams();
+  return (
+    <Suspense fallback={<LinearProgress />}>
+      <PasswordResetContent />
+    </Suspense>
+  )
+}
+
+function PasswordResetContent() {
+  const searchParams = useSearchParams()
   const router = useRouter()
 
-  const code = searchParams?.get('code');
-  const email = searchParams?.get('email');
+  const code = searchParams?.get('code')
+  const email = searchParams?.get('email')
+
+  const [checkCode, { isError, isSuccess }] = useCheckRecoveryCodeMutation()
+
+  const handleVerify = useCallback(async () => {
+    if (!code || !email) return
+
+    try {
+      await checkCode({ recoveryCode: code }).unwrap()
+    } catch (error) {
+      console.error('Token verification failed:', error)
+    }
+  }, [code, email, checkCode])
 
   useEffect(() => {
     if (!code && !email) {
       router.push('/')
       return
     }
-    handleVerify();
-  }, [code, router])
-
-  const [checkCode, { isError, isSuccess }] = useCheckRecoveryCodeMutation();
-
-  const handleVerify = async () => {
-    if (!code || !email) return;
-
-    try {
-      await checkCode({ recoveryCode: code }).unwrap();
-    } catch (error) {
-      console.error('Token verification failed:', error);
-    }
-  };
+    handleVerify()
+  }, [code, email, router, handleVerify])
 
   if (isError) {
-    return <ExpiredTokenScreen email={email} />;
+    return <ExpiredTokenScreen email={email} />
   }
   if (isSuccess) {
-    return <NewPasswordForm code={code} />;
+    return <NewPasswordForm code={code} />
   }
 
   return <LinearProgress />
 }
-
-
