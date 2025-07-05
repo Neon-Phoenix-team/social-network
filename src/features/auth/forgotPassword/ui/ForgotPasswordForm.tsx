@@ -12,13 +12,12 @@ import { isApiError } from "../api/forgotPasswordApi.types";
 import { Card } from "@/shared/ui/Card/Card";
 import { ForgotPasswordFormData, forgotPasswordSchema } from "../schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { PASSWORD_RESET_BASE_URL } from "../constants/urls";
 
 const modalText = {
   title: "Email sent",
   text: 'We have sent a link to confirm your email to '
 }
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
 
 export const ForgotPasswordForm = () => {
   const [forgotPassword, { isSuccess, reset: resetMutation }] = useForgotPasswordMutation();
@@ -52,7 +51,7 @@ export const ForgotPasswordForm = () => {
     }
 
     try {
-      await forgotPassword({ email: data.email, recaptcha: data.recaptchaToken, baseUrl }).unwrap();
+      await forgotPassword({ email: data.email, recaptcha: data.recaptchaToken, baseUrl: PASSWORD_RESET_BASE_URL }).unwrap();
       setEmail(data.email)
       reset();
       setServerErrorMessage(null)

@@ -10,14 +10,15 @@ import FlagRussia from '@/assets/icons/components/FlagRussia'
 import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom'
 import { useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useAuthGuard } from '@/shared/hooks'
+import { GlobalLinearProgress } from '../GlobalLinearProgress/GlobalLinearProgress'
+import { useGetMeQuery } from '@/features/auth/api/authApi'
 
 
 export const Header = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const {  user, isLoading } = useAuthGuard()
-  const isLoggedIn = !!user
+  const { data, isLoading } = useGetMeQuery()
+  const isLoggedIn = !!data
 
   const onClickSignup = () => {
     router.push('/auth/signup')
@@ -87,6 +88,7 @@ export const Header = () => {
           )}
         </div>
       </div>
+      <GlobalLinearProgress />
     </header>
   )
 }
