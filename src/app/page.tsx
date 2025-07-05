@@ -2,6 +2,7 @@
 
 import styles from './page.module.css'
 import { useEffect, Suspense, useState } from 'react'
+
 import { useGetMeQuery, useRegistrationConfirmationMutation } from '@/features/auth/api/authApi'
 import { EmailVerification } from '@/features/auth/ui/EmailVerification/EmailVerification'
 

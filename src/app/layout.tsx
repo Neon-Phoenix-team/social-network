@@ -14,8 +14,6 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode
 }>) {
-
-
   return (
     <html lang="en">
       <body cz-shortcut-listen="true">
